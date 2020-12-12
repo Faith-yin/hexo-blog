@@ -1,0 +1,22 @@
+
+hexo 使用：https://hexo.io/zh-cn/docs/syntax-highlight
+
+
+命令使用：https://hexo.io/zh-cn/docs/commands
+
+1. 新建页面：hexo new page about
+
+2. 新建文章：hexo new hello-world
+
+3. 清除缓存文件 (db.json) 和已生成的静态文件 (public)：hexo clean
+
+4. 生成静态页面：hexo g  (generate 生成的意思)
+
+5. 启动服务器：hexo s (默认情况下，访问网址为： http://localhost:4000/)
+
+
+
+6. 部署至服务器：hexo d  (d 就是 deploy ， 部署上去的意思 )
+
+
+
