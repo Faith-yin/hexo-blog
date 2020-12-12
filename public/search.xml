@@ -1118,7 +1118,7 @@
 <p>(2) Data URLs 由四个部分组成：前缀(data:)、指示数据类型的MIME类型、如果非文本则为可选的base64标记、数据本身：data:[<mediatype>][;base64],<data></p>
 <br>
 
-<h3 id="4-canvas"><a href="#4-canvas" class="headerlink" title="4. canvas"></a>4. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" >canvas<i class="fas fa-external-link-alt"></i></a></h3><p>(1) Canvas API 提供了一个通过JavaScript 和 HTML的 <canvas> 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。</p>
+<h3 id="4-canvas"><a href="#4-canvas" class="headerlink" title="4. canvas"></a>4. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" >canvas<i class="fas fa-external-link-alt"></i></a></h3><p>(1) Canvas API 提供了一个通过JavaScript 和 HTML的 <code>&lt;canvas&gt;</code> 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。</p>
 <br>
 
 <p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201202084724368-40559622.jpg" alt="关系图"></p>
