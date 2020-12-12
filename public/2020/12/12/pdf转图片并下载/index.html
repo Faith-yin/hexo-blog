@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        pdf转图片并下载 |
+        
+        卡布奇诺
+    </title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"faith-yin.github.io","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#D04646","avatar":"/images/photo.png","favicon":"/images/logo.png","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving..."}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"version":"3.0.4"};
+    KEEP.language = {"search":"搜索...","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","tagcloud":"标签云","comment":"评论","home":"首页","archive":"归档","archives":"归档","about":"关于","site_uv":"访问人数","site_pv":"总访问量","links":"友链","link":"友链","top":"顶置","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","copyright":{"title":"本文标题","author":"本文作者","link":"本文链接","create_time":"创建时间","license_title":"版权声明","license_content":"本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="卡布奇诺" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            卡布奇诺
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首页
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        归档
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        分类
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/tags"
+                    >
+                        标签
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        友链
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        关于
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">pdf转图片并下载</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/photo.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>卡布奇诺</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2020-12-12 18:15:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/JavaScript/">JavaScript</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/pdf/">pdf</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>2.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="一、实现效果"><a href="#一、实现效果" class="headerlink" title="一、实现效果"></a>一、实现效果</h3><p>选择本地 pdf 文件上传，会生成 pdf 文件的预览，点击保存功能。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165147927-1392643265.png" alt="预览图1"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165256769-1608228895.png" alt="预览图2"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165306613-1977214439.png" alt="预览图3"></p>
+<br>
+
+<h3 id="二、所用插件"><a href="#二、所用插件" class="headerlink" title="二、所用插件"></a>二、所用插件</h3><ol>
+<li>pdf文件相关的文件处理插件：<code>pdfjs-dist@2.3.200</code></li>
+<li>zip压缩文件相关的包： <code>jszip@3.5.0</code></li>
+<li>文件保存下载相关的包：<code>file-saver@2.0.2</code></li>
+</ol>
+<br>
+
+<h3 id="三、相关代码"><a href="#三、相关代码" class="headerlink" title="三、相关代码"></a>三、相关代码</h3><blockquote>
+<p>vue 中测试</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line"> * @<span class="built_in">Date</span>: <span class="number">2020</span>-<span class="number">10</span>-<span class="number">21</span> <span class="number">10</span>:<span class="number">44</span>:<span class="number">54</span></span><br><span class="line"> * @information: pdf 转图片并下载</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;page09&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;info-box&quot;</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">        &lt;input id=<span class="string">&quot;input&quot;</span> type=<span class="string">&quot;file&quot;</span> accept=<span class="string">&quot;application/pdf&quot;</span> @change=<span class="string">&quot;convertFile()&quot;</span>/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;cell&quot;</span>&gt;</span><br><span class="line">        &lt;div&gt;名称：&#123;&#123;fileName || <span class="string">&#x27;-&#x27;</span>&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;大小：&#123;&#123;<span class="built_in">Number</span>(fileSize).toFixed(<span class="number">2</span>)&#125;&#125;M&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;页数：&#123;&#123;filePage&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;onExportImg&quot;</span>&gt;保存图片&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=<span class="string">&quot;container&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> PDFJS <span class="keyword">from</span> <span class="string">&#x27;pdfjs-dist&#x27;</span></span><br><span class="line"><span class="keyword">import</span> JSZIP <span class="keyword">from</span> <span class="string">&#x27;jszip&#x27;</span></span><br><span class="line"><span class="keyword">import</span> FileSaver <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="comment">// pdf地址</span></span><br><span class="line">      pdfPath2: <span class="string">`https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf`</span>,</span><br><span class="line">      <span class="comment">// arrayBuffer</span></span><br><span class="line">      arrayBuffer: <span class="literal">null</span>, </span><br><span class="line">      <span class="comment">// 文件名称</span></span><br><span class="line">      fileName: <span class="literal">null</span>,</span><br><span class="line">      <span class="comment">// 文件大小</span></span><br><span class="line">      fileSize: <span class="number">0</span>,</span><br><span class="line">      <span class="comment">// 文件页数</span></span><br><span class="line">      filePage: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 读取文件内容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">convertFile</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> file = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>).files</span><br><span class="line">      <span class="keyword">if</span>(!file.length) <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">let</span> &#123;name, size&#125; = file[<span class="number">0</span>]</span><br><span class="line">      <span class="built_in">Object</span>.assign(<span class="built_in">this</span>, &#123;<span class="attr">fileName</span>: name, <span class="attr">fileSize</span>: size/<span class="number">1024</span>/<span class="number">1024</span>&#125;)</span><br><span class="line">      <span class="comment">// 使用FileReader对象，web应用程序可以异步的读取存储在用户计算机上的文件(或者原始数据缓冲)内容，可以使用File对象或者Blob对象来指定所要处理的文件或数据</span></span><br><span class="line">      <span class="keyword">let</span> fileReader = <span class="keyword">new</span> FileReader()</span><br><span class="line">      <span class="comment">// 异步按字节读取文件内容，结果用ArrayBuffer对象表示</span></span><br><span class="line">      fileReader.readAsArrayBuffer(file[<span class="number">0</span>])</span><br><span class="line">      fileReader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> arrayBuffer = <span class="built_in">this</span>.arrayBuffer = e.target.result</span><br><span class="line">        <span class="comment">// 创建canvas节点</span></span><br><span class="line">        <span class="built_in">this</span>.createCanvas(arrayBuffer)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建canvas</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">createCanvas</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 清空节点下数据</span></span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">&#x27;container&#x27;</span>).innerHTML = <span class="string">&#x27;&#x27;</span></span><br><span class="line">      <span class="comment">// 使用getTextContent获取pdf内容</span></span><br><span class="line">      PDFJS.getDocument(val).promise.then(<span class="function"><span class="params">el</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> filePage = <span class="built_in">this</span>.filePage = el.numPages</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= filePage; i ++) &#123;</span><br><span class="line">          <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">          canvas.id = <span class="string">`pageNum-<span class="subst">$&#123;i&#125;</span>`</span></span><br><span class="line">          <span class="keyword">let</span> context = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">          <span class="built_in">document</span>.getElementById(<span class="string">&#x27;container&#x27;</span>).append(canvas)</span><br><span class="line">          <span class="comment">// 渲染canvas</span></span><br><span class="line">          <span class="built_in">this</span>.openPage(el, i, context)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 渲染canvas</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">openPage</span>(<span class="params">pdfFile, pageNumber, context</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 获取PDF文档中的各个页面</span></span><br><span class="line">      pdfFile.getPage(pageNumber).then(<span class="function"><span class="params">page</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 设置展示比例</span></span><br><span class="line">        <span class="keyword">let</span> scale = <span class="number">3</span></span><br><span class="line">        <span class="comment">// 获取pdf尺寸</span></span><br><span class="line">        <span class="keyword">let</span> viewport = page.getViewport(scale)</span><br><span class="line">        <span class="keyword">let</span> canvas = context.canvas</span><br><span class="line">        canvas.width = viewport.width</span><br><span class="line">        canvas.height = viewport.height</span><br><span class="line">        canvas.style.width = <span class="string">&quot;100%&quot;</span></span><br><span class="line">        canvas.style.height = <span class="string">&quot;100%&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> model = &#123;</span><br><span class="line">          canvasContext: context,</span><br><span class="line">          viewport: viewport,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 渲染PDF</span></span><br><span class="line">        page.render(model)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存图片</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">onExportImg</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(!<span class="built_in">this</span>.arrayBuffer) &#123;</span><br><span class="line">        alert(<span class="string">`请上传pdf文件`</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> jszip = <span class="keyword">new</span> JSZIP()</span><br><span class="line">      <span class="comment">// 解压缩后的文件夹名称</span></span><br><span class="line">      <span class="keyword">let</span> images = jszip.folder(<span class="string">&quot;images&quot;</span>)</span><br><span class="line">      <span class="keyword">let</span> eleList = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">      <span class="comment">// 遍历所有canvas节点</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; eleList.length; i ++) &#123;</span><br><span class="line">        <span class="keyword">let</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">`pageNum-<span class="subst">$&#123;i+<span class="number">1</span>&#125;</span>`</span>)</span><br><span class="line">        <span class="comment">// 向此文件夹中加入文件</span></span><br><span class="line">        <span class="comment">// toDataURL() 方法返回一个包含图片展示的 data URI 。可以使用 type 参数其类型，默认为 PNG 格式。图片的分辨率为96dpi</span></span><br><span class="line">        images.file(<span class="string">`image-<span class="subst">$&#123;i+<span class="number">1</span>&#125;</span>.png`</span>, <span class="built_in">this</span>.dataURLtoBlob(canvas.toDataURL(<span class="string">&quot;image/png&quot;</span>, <span class="number">1.0</span>)), &#123;</span><br><span class="line">          base64: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 生成一个zip文件</span></span><br><span class="line">      jszip.generateAsync(&#123;</span><br><span class="line">        type: <span class="string">&quot;blob&quot;</span></span><br><span class="line">      &#125;).then(<span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 FileSaver 保存下载 zip 文件</span></span><br><span class="line">        FileSaver.saveAs(content, <span class="string">&quot;pdfToImages.zip&quot;</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * dataURL 转成 Blob</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">dataURLtoBlob</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> arr = val.split(<span class="string">&#x27;,&#x27;</span>),</span><br><span class="line">          mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span><br><span class="line">          bstr = atob(arr[<span class="number">1</span>]),</span><br><span class="line">          n = bstr.length,</span><br><span class="line">          u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">      <span class="keyword">while</span>(n --) &#123;</span><br><span class="line">        <span class="comment">// charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数</span></span><br><span class="line">        u8arr[n] = bstr.charCodeAt(n)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// new Blob(blobParts, [options]) 参数说明:</span></span><br><span class="line">      <span class="comment">// 1. blobParts：数组类型，数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是ArrayBuffer, ArrayBufferView, Blob, DOMString </span></span><br><span class="line">      <span class="comment">// 2. options：可选项，字典格式类型，可以指定如下两个属性：</span></span><br><span class="line">      <span class="comment">//    (1) type，默认值为 &quot;&quot;，它代表了将会被放入到blob中的数组内容的MIME类型。</span></span><br><span class="line">      <span class="comment">//    (2) endings，默认值为&quot;transparent&quot;，用于指定包含行结束符\n的字符串如何被写入。 它是以下两个值中的一个： &quot;native&quot;，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； &quot;transparent&quot;，表示会保持blob中保存的结束符不变</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123; <span class="attr">type</span>: mime &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=<span class="string">&quot;scss&quot;</span>&gt;</span><br><span class="line">#page09 &#123;</span><br><span class="line">  width: 1000px;</span><br><span class="line">  margin: <span class="number">0</span> auto;</span><br><span class="line"></span><br><span class="line">  .info-box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line"></span><br><span class="line">    .input &#123;</span><br><span class="line">      margin: 15px <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">      #input &#123;</span><br><span class="line">        width: <span class="number">100</span>%;</span><br><span class="line">        height: <span class="number">100</span>%;</span><br><span class="line">        cursor: pointer;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .cell &#123;</span><br><span class="line">      margin: 15px <span class="number">0</span>;</span><br><span class="line">      display: flex;  </span><br><span class="line">      justify-content: space-around;</span><br><span class="line"></span><br><span class="line">      div &#123;</span><br><span class="line">        margin-right: 20px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  #container &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    min-height: 850px;</span><br><span class="line">    margin:  <span class="number">0</span> auto;</span><br><span class="line">    border: 1px solid #eee;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line"></span><br><span class="line">    canvas &#123;</span><br><span class="line">      margin-bottom: 10px;</span><br><span class="line">      border: 1px solid #ff6700;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="四、相关知识点"><a href="#四、相关知识点" class="headerlink" title="四、相关知识点"></a>四、相关知识点</h3><h4 id="1-使用-FileReader-进行文件读取"><a href="#1-使用-FileReader-进行文件读取" class="headerlink" title="1. 使用 FileReader 进行文件读取"></a>1. 使用 FileReader 进行文件读取</h4><blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/hhhyaaon/p/5929492.html" >[HTML5] FileReader对象<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1）创建实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fileReader = <span class="keyword">new</span> FileReader()</span><br></pre></td></tr></table></figure>
+
+
+<p>（2）方法</p>
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abort():void</td>
+<td>终止文件读取操作</td>
+</tr>
+<tr>
+<td>readAsArrayBuffer(file):void</td>
+<td>异步按字节读取文件内容，结果用ArrayBuffer对象表示</td>
+</tr>
+<tr>
+<td>readAsBinaryString(file):void</td>
+<td>异步按字节读取文件内容，结果为文件的二进制串</td>
+</tr>
+<tr>
+<td>readAsDataURL(file):void</td>
+<td>异步读取文件内容，结果用data:url的字符串形式表示</td>
+</tr>
+<tr>
+<td>readAsText(file,encoding):void</td>
+<td>异步按字符读取文件内容，结果用字符串形式表示</td>
+</tr>
+</tbody></table>
+<p>（3）事件： FileReader 通过异步的方式读取文件内容，结果均是通过事件回调获取。</p>
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onabort</td>
+<td>当读取操作被中止时调用</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>当读取操作发生错误时调用</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>当读取操作成功完成时调用</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>当读取操作完成时调用,不管是成功还是失败</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>当读取操作将要开始之前调用</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>在读取数据过程中周期性调用</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="2-使用-canvas-的-toDataURL-方法返回-包含-data-URI-的DOMString"><a href="#2-使用-canvas-的-toDataURL-方法返回-包含-data-URI-的DOMString" class="headerlink" title="2. 使用 canvas 的 toDataURL() 方法返回 包含 data URI 的DOMString"></a>2. 使用 canvas 的 <code>toDataURL()</code> 方法返回 包含 data URI 的DOMString</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">`canvas`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数说明：</span></span><br><span class="line"><span class="comment">// 1. type（可选）：图片格式，默认为 image/png</span></span><br><span class="line"><span class="comment">// 2. encoderOptions（可选）：在指定图片格式为 image/jpeg 或 image/webp的情况下，可以从 0 到 1 的区间内选择图片的质量。如果超出取值范围，将会使用默认值 0.92。其他参数会被忽略。</span></span><br><span class="line"><span class="keyword">let</span> result = canvas.toDataURL(<span class="string">&quot;image/png&quot;</span>, <span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL" >MDN: HTMLCanvasElement.toDataURL()<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<br>
+
+
+<h4 id="3-ArrayBuffer-二进制数组"><a href="#3-ArrayBuffer-二进制数组" class="headerlink" title="3. ArrayBuffer 二进制数组"></a>3. ArrayBuffer 二进制数组</h4><blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zh.javascript.info/arraybuffer-binary-arrays" >ArrayBuffer，二进制数组<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1） JS 中的二进制数据格式，例：ArrayBuffer，Uint8Array，DataView，Blob，File 及其他。</p>
+<p><strong>基本的二进制对象是 ArrayBuffer —— 对固定长度的连续内存空间的引用。</strong></p>
+<p>（2）如要操作 ArrayBuffer，我们需要使用“视图”对象。 视图对象本身并不存储任何东西。它是一副“眼镜”，透过它来解释存储在 ArrayBuffer 中的字节。例如下：</p>
+<table>
+<thead>
+<tr>
+<th>视图类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Uint8Array</td>
+<td>将 ArrayBuffer 中的每个字节视为 0 到 255 之间的单个数字（每个字节是 8 位，因此只能容纳那么多）。这称为 “8 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td>将每 2 个字节视为一个 0 到 65535 之间的整数。这称为 “16 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td>将每 4 个字节视为一个 0 到 4294967295 之间的整数。这称为 “32 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td>将每 8 个字节视为一个 5.0x10-324 到 1.8x10308 之间的浮点数。</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="3-Blob"><a href="#3-Blob" class="headerlink" title="3. Blob"></a>3. Blob</h4><blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000011563430" >细说Web API中的Blob<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1）概述： Blob 对象表示一个不可变、原始数据的类文件对象。它的数据可以按文本或二进制的格式进行读取，也可以转换成 ReadableStream 来用于数据操作。Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。</p>
+<p>（2）创建 Blob 对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数说明</span></span><br><span class="line"><span class="comment">// 1. blobParts： 数组类型，数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是ArrayBuffer, ArrayBufferView, Blob, DOMString</span></span><br><span class="line"><span class="comment">// 2. options：可选项，字典格式类型，可以指定如下两个属性：</span></span><br><span class="line"></span><br><span class="line">type，默认值为 <span class="string">&quot;&quot;</span>，它代表了将会被放入到blob中的数组内容的MIME类型。</span><br><span class="line">endings，默认值为<span class="string">&quot;transparent&quot;</span>，用于指定包含行结束符\n的字符串如何被写入。 它是以下两个值中的一个： <span class="string">&quot;native&quot;</span>，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； <span class="string">&quot;transparent&quot;</span>，表示会保持blob中保存的结束符不变。</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blob = <span class="keyword">new</span> Blob(blobParts[, options])</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> data1 = <span class="string">&quot;a&quot;</span></span><br><span class="line"><span class="keyword">let</span> data2 = &#123; <span class="string">&quot;name&quot;</span>: <span class="string">&quot;abc&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blob1 = <span class="keyword">new</span> Blob([data1])</span><br><span class="line"><span class="keyword">let</span> blob2 = <span class="keyword">new</span> Blob([<span class="built_in">JSON</span>.stringify(data4)])</span><br><span class="line"><span class="keyword">let</span> blob3 = <span class="keyword">new</span> Blob([data4])</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(blob1);  <span class="comment">// Blob &#123;size: 1, type: &quot;&quot;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(blob2);  <span class="comment">// Blob &#123;size: 14, type: &quot;&quot;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(blob3);  <span class="comment">// Blob &#123;size: 15, type: &quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>size代表Blob 对象中所包含数据的字节数。这里要注意，使用字符串和普通对象创建Blob时的不同，blob4使用通过JSON.stringify把data4对象转换成json字符串，blob5则直接使用data4创建，两个对象的size分别为14和15。blob4的size等于14很容易理解，因为JSON.stringify(data4)的结果为：”{“name”:”abc”}”，正好14个字节(不包含最外层的引号)。blob5的size等于15是如何计算而来的呢？实际上，当使用普通对象创建Blob对象时，相当于调用了普通对象的toString()方法得到字符串数据，然后再创建Blob对象。所以，blob5保存的数据是”[object Object]”，是15个字节(不包含最外层的引号)。</p>
+</blockquote>
+<p>（3）Blob 方法： slice()</p>
+<p>（4）Blob使用场景</p>
+<ul>
+<li>分片上传</li>
+<li>Blob URL</li>
+</ul>
+<br>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://xxlllq.github.io/readme/2018/05/09/pdf2img.html" >PDF转成图片<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p><br><br></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：pdf转图片并下载</li>
+        <li>本文作者：卡布奇诺</li>
+        <li>创建时间：2020-12-12 18:15:00</li>
+        <li>
+            本文链接：https://faith-yin.github.io/2020/12/12/pdf转图片并下载/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/12/12/File%E3%80%81Blob%E3%80%81dataURL%E5%92%8Ccanvas%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E8%BD%AC%E6%8D%A2/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">File、Blob、dataURL和canvas的应用与转换</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/12/12/WebSocket%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">WebSocket理解与使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+        <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DdDKUzkz2isnuXAMlcGGqkxr-gzGzoHsz',
+                appKey: '5JNUXG4aNBfpG806vPJUihcw',
+                meta: 'I22vciS8nGhG6og0ktfhDxrE'.split(','),
+                avatar: 'wavatar',
+                enableQQ: true,
+                placeholder: '快来吐槽吧...',
+                lang: 'zh-CN'.toLowerCase()
+            });
+
+
+            // Valine 评论列表增加"博主"标识
+            const getValineDomTimer = setInterval(() => {
+                const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                if (vcards.length > 0) {
+
+                    let author = '卡布奇诺';
+                    if (author) {
+                        author = author.toLocaleLowerCase();
+                    }
+
+                    for (let vcard of vcards) {
+                        const vnick = vcard.querySelector('.vhead .vnick');
+                        if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                            vcard.classList.add('author');
+                        }
+                    }
+                    clearInterval(getValineDomTimer);
+                } else {
+                    clearInterval(getValineDomTimer);
+                }
+            }, 2000);
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">卡布奇诺</a>
+        </div>
+        
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动 | 主题 <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">一、实现效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%89%80%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">二、所用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">三、相关代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">四、相关知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-FileReader-%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">4.1.</span> <span class="nav-text">1. 使用 FileReader 进行文件读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-canvas-%E7%9A%84-toDataURL-%E6%96%B9%E6%B3%95%E8%BF%94%E5%9B%9E-%E5%8C%85%E5%90%AB-data-URI-%E7%9A%84DOMString"><span class="nav-number">4.2.</span> <span class="nav-text">2. 使用 canvas 的 toDataURL() 方法返回 包含 data URI 的DOMString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-ArrayBuffer-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E7%BB%84"><span class="nav-number">4.3.</span> <span class="nav-text">3. ArrayBuffer 二进制数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Blob"><span class="nav-number">4.4.</span> <span class="nav-text">3. Blob</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        Vue中axios跨域请求解决方法 |
+        
+        卡布奇诺
+    </title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"faith-yin.github.io","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#D04646","avatar":"/images/photo.png","favicon":"/images/logo.png","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving..."}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"version":"3.0.4"};
+    KEEP.language = {"search":"搜索...","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","tagcloud":"标签云","comment":"评论","home":"首页","archive":"归档","archives":"归档","about":"关于","site_uv":"访问人数","site_pv":"总访问量","links":"友链","link":"友链","top":"顶置","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","copyright":{"title":"本文标题","author":"本文作者","link":"本文链接","create_time":"创建时间","license_title":"版权声明","license_content":"本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="卡布奇诺" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            卡布奇诺
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首页
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        归档
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        分类
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/tags"
+                    >
+                        标签
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        友链
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        关于
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Vue中axios跨域请求解决方法</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/photo.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>卡布奇诺</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2020-12-12 17:00:23
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Vue/">Vue</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%B7%A8%E5%9F%9F/">跨域</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/vue/">vue</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>418 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> <strong>跨域</strong> ：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。</p>
+<p>所谓 <strong>同源</strong> 是指，域名，协议，端口均相同，浏览器执行 js 脚本时，会检查这个脚本属于哪个页面，如果不是同源页面，就不会被执行。</p>
+<h3 id="以下举例："><a href="#以下举例：" class="headerlink" title="以下举例："></a>以下举例：</h3><p>（1）<a class="link"   target="_blank" rel="noopener" href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   target="_blank" rel="noopener" href="http://www.123.com/server.php" >http://www.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （非跨域）</p>
+<p>（2）<a class="link"   target="_blank" rel="noopener" href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   target="_blank" rel="noopener" href="http://www.456.com/server.php" >http://www.456.com/server.php<i class="fas fa-external-link-alt"></i></a> （主域名不同:123/456，跨域）</p>
+<p>（3）<a class="link"   target="_blank" rel="noopener" href="http://abc.123.com/index.html" >http://abc.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   target="_blank" rel="noopener" href="http://def.123.com/server.php" >http://def.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （子域名不同:abc/def，跨域）</p>
+<p>（4）<a class="link"   target="_blank" rel="noopener" href="http://www.123.com:8080/index.html" >http://www.123.com:8080/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   target="_blank" rel="noopener" href="http://www.123.com:8081/server.php" >http://www.123.com:8081/server.php<i class="fas fa-external-link-alt"></i></a> （端口不同:8080/8081，跨域）</p>
+<p>（5）<a class="link"   target="_blank" rel="noopener" href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   target="_blank" rel="noopener" href="https://www.123.com/server.php" >https://www.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （协议不同:http/https，跨域）</p>
+<p>（6）localhost和127.0.0.1虽然都指向本机，但也属于跨域。</p>
+<p>　　</p>
+<h3 id="一，前端解决之-代理"><a href="#一，前端解决之-代理" class="headerlink" title="一，前端解决之 代理"></a>一，前端解决之 代理</h3><p>仅开发环境下建议如此。。</p>
+<h4 id="1-vue-cli-2-x-版本解决方法如下"><a href="#1-vue-cli-2-x-版本解决方法如下" class="headerlink" title="1.  vue-cli 2.x 版本解决方法如下"></a>1.  vue-cli 2.x 版本解决方法如下</h4><p>（1） Vue 的 config 文件夹下的 index.js 文件中，在 proxyTable<br>对象中书写跨域配置项：将以  /api 开头的请求地址基础URL替换为 <a class="link"   target="_blank" rel="noopener" href="http://localhost:8888/" >http://localhost:8888<i class="fas fa-external-link-alt"></i></a> </p>
+<p>（2）将 axios 的 baseURL 改为 /api </p>
+<p> <img src="https://img2020.cnblogs.com/blog/1855591/202003/1855591-20200308174002544-1723905577.png"></p>
+<p> <img src="https://img2020.cnblogs.com/blog/1855591/202003/1855591-20200308174512674-687478051.png"></p>
+<h4 id="2-vue-cli-3-x-版本解决方法如下"><a href="#2-vue-cli-3-x-版本解决方法如下" class="headerlink" title="2.  vue-cli 3.x 版本解决方法如下"></a>2.  vue-cli 3.x 版本解决方法如下</h4><p>（1）在项目根目录下创建全局配置文件 vue.config.js</p>
+<p>（2）在配置文件中书写跨域配置（如下图）</p>
+<p>（3）将 axios 的 baseURL 改为 /api </p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202008/1855591-20200830141057452-2064672090.png"></p>
+<h3 id="二，后端springboot项目解决之-配置项"><a href="#二，后端springboot项目解决之-配置项" class="headerlink" title="二，后端springboot项目解决之 配置项"></a>二，后端springboot项目解决之 配置项</h3><p>推荐在服务端进行跨域相关配置，在项目中新建允许跨域配置类，如下图。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202008/1855591-20200830141622702-1420880345.png"></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Vue中axios跨域请求解决方法</li>
+        <li>本文作者：卡布奇诺</li>
+        <li>创建时间：2020-12-12 17:00:23</li>
+        <li>
+            本文链接：https://faith-yin.github.io/2020/12/12/Vue中axios跨域请求解决方法/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/12/12/Web%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8%E4%B9%8BsessionStorage%E5%92%8ClocalStorage/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Web前端存储之sessionStorage和localStorage</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/12/12/moment%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">moment插件的使用姿势</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+        <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DdDKUzkz2isnuXAMlcGGqkxr-gzGzoHsz',
+                appKey: '5JNUXG4aNBfpG806vPJUihcw',
+                meta: 'I22vciS8nGhG6og0ktfhDxrE'.split(','),
+                avatar: 'wavatar',
+                enableQQ: true,
+                placeholder: '快来吐槽吧...',
+                lang: 'zh-CN'.toLowerCase()
+            });
+
+
+            // Valine 评论列表增加"博主"标识
+            const getValineDomTimer = setInterval(() => {
+                const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                if (vcards.length > 0) {
+
+                    let author = '卡布奇诺';
+                    if (author) {
+                        author = author.toLocaleLowerCase();
+                    }
+
+                    for (let vcard of vcards) {
+                        const vnick = vcard.querySelector('.vhead .vnick');
+                        if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                            vcard.classList.add('author');
+                        }
+                    }
+                    clearInterval(getValineDomTimer);
+                } else {
+                    clearInterval(getValineDomTimer);
+                }
+            }, 2000);
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">卡布奇诺</a>
+        </div>
+        
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动 | 主题 <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">以下举例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%EF%BC%8C%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%86%B3%E4%B9%8B-%E4%BB%A3%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">一，前端解决之 代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-vue-cli-2-x-%E7%89%88%E6%9C%AC%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E5%A6%82%E4%B8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">1.  vue-cli 2.x 版本解决方法如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-vue-cli-3-x-%E7%89%88%E6%9C%AC%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E5%A6%82%E4%B8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">2.  vue-cli 3.x 版本解决方法如下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%EF%BC%8C%E5%90%8E%E7%AB%AFspringboot%E9%A1%B9%E7%9B%AE%E8%A7%A3%E5%86%B3%E4%B9%8B-%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">二，后端springboot项目解决之 配置项</span></a></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

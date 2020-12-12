@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        JS面向对象与prototype，__proto__，constructor |
+        
+        卡布奇诺
+    </title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"faith-yin.github.io","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#D04646","avatar":"/images/photo.png","favicon":"/images/logo.png","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving..."}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"version":"3.0.4"};
+    KEEP.language = {"search":"搜索...","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","tagcloud":"标签云","comment":"评论","home":"首页","archive":"归档","archives":"归档","about":"关于","site_uv":"访问人数","site_pv":"总访问量","links":"友链","link":"友链","top":"顶置","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","copyright":{"title":"本文标题","author":"本文作者","link":"本文链接","create_time":"创建时间","license_title":"版权声明","license_content":"本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="卡布奇诺" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            卡布奇诺
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首页
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        归档
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        分类
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/tags"
+                    >
+                        标签
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        友链
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        关于
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">JS面向对象与prototype，__proto__，constructor</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/photo.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>卡布奇诺</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2020-12-12 18:08:08
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/JavaScript/">JavaScript</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>2.7k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="一、Java中的面向对象与继承"><a href="#一、Java中的面向对象与继承" class="headerlink" title="一、Java中的面向对象与继承"></a>一、Java中的面向对象与继承</h2><ol>
+<li>下面代码中，我们定义了一个小狗类，在类中定义了一个属性和两个方法，一个构造方法用于初始化小狗的年龄 age，一个公有方法 say 用于打印。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Puppy</span></span>&#123;</span><br><span class="line">    int puppyAge;</span><br><span class="line">    </span><br><span class="line">    public <span class="function"><span class="title">Puppy</span>(<span class="params">age</span>)</span>&#123;</span><br><span class="line">      puppyAge = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public <span class="keyword">void</span> <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;汪汪汪&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="2">
+<li>这是一个通用的类，当我们需要一个两岁的小狗的实例是这样写的，这个实例同时具有父类的方法。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Puppy myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line">muPuppy.say(); <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="3">
+<li>以上的类和实例的实现均基于 java 的语法来的，但是相比于相对完善的 java 语法来说，早期的 js 没有 class 关键字啊（以下说 js 没有 class 关键字都是指 ES6 之前的 js ，主要帮助大家理解概念）。JS为了支持面向对象，使用了一种比较曲折的方式，具体如下。</li>
+</ol>
+<h2 id="二、JS中的面向对象与继承"><a href="#二、JS中的面向对象与继承" class="headerlink" title="二、JS中的面向对象与继承"></a>二、JS中的面向对象与继承</h2><ol>
+<li><strong>没有 class，用函数代替</strong> ：早期的 js 没有 class 关键字，是怎么办的呢？对，是用函数来代替，函数不仅能执行普通功能，还能当 class 使用，栗子如下。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="2">
+<li>以上代码实现了一个函数。下面我们就可以生成以上函数的实例了。</li>
+</ol>
+<blockquote>
+<p>构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其首字母大写。构造函数和普通函数的区别在于，使用 new 生成实例的函数就是构造函数，直接调用的就是普通函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myPuppy = <span class="keyword">new</span> Puppy()</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="3">
+<li><strong>函数本身就是构造函数</strong> ：虽然我们有了小狗的实例，但是不像 java 语法似的可以在类中定义构造函数来不能设置小狗的年龄啊。不慌，其实，充当类使用的函数本身就是构造函数，而且它就是默认的构造函数，下面我们重写以上代码，让构造函数接收函数来初始化小狗的年龄 age 。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数：可接收参数来初始化属性值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化时可以传年龄参数了</span></span><br><span class="line"><span class="keyword">let</span> myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="4">
+<li><strong>构造函数中的 this 指向实例化对象</strong> ：构造函数中的 this 指向需要注意：被作为类使用的函数里面 this 总是指向实例化对象，也就是 myPuppy 。这么设计的目的就是让使用者可以通过构造函数给实例对象设置属性，这时候打印出来看 myPuppy.puppyAge 就是 2 。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(myPuppy.puppyAge)   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="5">
+<li><strong>prototype 上定义实例方法</strong> ：以上 4 点，我们实现了构造函数定义以及实例化。java 语法可以直接在类中定义公共方法来让实例小狗汪汪汪，js 如何办呢？对此，js 给出的解决方案是给构造方法添加一个 <code>prototype</code> 属性，挂载在这上面的方法，实例化时就会给到实例对象。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在构造函数的 prototype 上添加方法</span></span><br><span class="line">Puppy.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例对象调用相应方法</span></span><br><span class="line">myPuppy.say()    <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="6">
+<li><strong>实例方法的查找用 proto</strong> ：以上可能有的同学就会有疑问了，方法在构造函数的 <code>prototype</code> 上，实例对象 myPuppy 怎么会找到 say 方法了呢？我们来打印 myPuppy 。</li>
+</ol>
+<p>（1）当你访问一个对象上没有的属性时，比如 myPuppy.say，对象会去 <code>__proto__</code> 查找。 <code>__proto__</code> 的值就等于父类的 prototype , <code>myPuppy.__proto__</code> 指向了 Puppy.prototype。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143617741-537961056.png" alt="实例方法的查找"></p>
+<p>（2）如果你访问的属性在 <code>Puppy.prototype</code> 也不存在，那又会继续往 <code>Puppy.prototype.__proto__</code> 上找，这时候其实就找到了 <code>Object.prototype</code> 了，<code>Object.prototype</code> 再往上找就没有了，也就是 null，这其实就是 <code>原型链</code>。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143646241-1354675868.png"></p>
+<br>
+
+<ol start="7">
+<li><strong>constructor</strong> ：</li>
+</ol>
+<p>（1）每个实例都有一个 constructor（构造函数）属性，该属性指向对象本身。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143656225-984188307.png"></p>
+<p>（2）prototype.constructor 是 prototype 上的一个保留属性，这个属性就指向类函数本身，用于指示当前类的构造函数。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143703547-376698011.png"></p>
+<p>（3）既然 prototype.constructor 是指向构造函数的一个指针，那我们是不是可以通过它来修改构造函数呢？我们来试试就知道了。我们先修改下这个函数，然后新建一个实例看看效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Puppy.prototype.constructor = <span class="function"><span class="keyword">function</span> <span class="title">myConstructor</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge2 = age + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy2 = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myPuppy2.puppyAge);    <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>上例说明，我们修改 <code>prototype.constructor</code> 只是修改了这个指针而已，并没有修改真正的构造函数。</p>
+<p>（4）上面我们其实已经说清楚了 <code>prototype</code>，<code>__proto__</code>，<code>constructor</code> 几者之间的关系，下面画一张图来更直观的看下</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143713505-1807018330.png" alt="关系图"></p>
+<br>
+
+<ol start="8">
+<li><strong>静态方法</strong> ：我们知道很多面向对象有静态方法这个概念，比如 java 直接是加一个 static 关键字就能将一个方法定义为静态方法。js  中定义一个静态方法更简单，直接将它作为类函数的属性就行。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在构造函数上定义静态方法 statciFunc</span></span><br><span class="line">Puppy.statciFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;我是静态方法，this拿不到实例对象&#x27;</span>)</span><br><span class="line">&#125;      </span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接通过类名调用</span></span><br><span class="line">Puppy.statciFunc(); </span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="9">
+<li><strong>继承</strong>：面向对象怎么能没有继承呢，根据前面所讲的知识，我们其实已经能够自己写一个继承了。所谓继承不就是子类能够继承父类的属性和方法吗？换句话说就是子类能够找到父类的 <code>prototype</code> ，最简单的方法就是子类原型的 <code>__proto__</code> 指向父类原型就行了。</li>
+</ol>
+<p>（1）以下继承方法只是让 Child 访问到了 Parent 原型链，但是没有执行 Parent 的构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = Parent.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> Child );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> Parent );   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）为了解决上述问题，我们不能单纯的修改 <code>Child.prototype.__proto__</code> 指向，还需要用 new 执行下 Parent 的构造函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.parentAge = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = <span class="keyword">new</span> Parent();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj.parentAge);    <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+<p>（3）上述方法会多一个 <code>__proto__</code> 层级，可以换成修改 <code>Child.prototype</code> 的指向来解决，注意将 <code>Child.prototype.constructor</code> 重置回来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.parentAge = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line"><span class="comment">// 注意重置constructor</span></span><br><span class="line">Child.prototype.constructor = Child;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj.parentAge);   <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="10">
+<li><strong>自己实现一个new</strong>：结合上面讲的，我们知道 new 其实就是生成了一个对象，这个对象能够访问类的原型，知道了原理，我们就可以自己实现一个 new 了。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 新建一个空对象</span></span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;;     </span><br><span class="line">  <span class="comment">// 执行构造函数</span></span><br><span class="line">  func.call(obj, ...args);  </span><br><span class="line">  <span class="comment">// 设置原型链</span></span><br><span class="line">  obj.__proto__ = func.prototype;    </span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Puppy.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy3 = myNew(Puppy, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy3.puppyAge);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy3.say());     <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="11">
+<li><strong>自己实现一个 instanceof</strong>：知道了原理，其实我们也知道了 instanceof 是干啥的。instanceof 不就是检查一个对象是不是某个类的实例吗？换句话说就是检查一个对象的的原型链上有没有这个类的 prototype ，知道了这个我们就可以自己实现一个了</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceof</span>(<span class="params">targetObj, targetClass</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 参数检查</span></span><br><span class="line">  <span class="keyword">if</span>(!targetObj || !targetClass || !targetObj.__proto__ || !targetClass.prototype)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> current = targetObj;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(current) &#123;   <span class="comment">// 一直往原型链上面找</span></span><br><span class="line">    <span class="keyword">if</span>(current.__proto__ === targetClass.prototype) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;    <span class="comment">// 找到了返回true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    current = current.__proto__;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;     <span class="comment">// 没找到返回false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用我们前面的继承实验下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = Parent.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(obj, Child) );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(obj, Parent) );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(&#123;&#125;, Parent) );   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="三、ES6的-class"><a href="#三、ES6的-class" class="headerlink" title="三、ES6的 class"></a>三、ES6的 class</h2><p>ES6 的 class 就是前面说的函数类的语法糖，比如我们的 Puppy 用 ES6 的 class 写就是这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Puppy</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 构造函数</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age</span>)</span> &#123;            </span><br><span class="line">    <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 实例方法</span></span><br><span class="line">  <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 静态方法</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">statciFunc</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;我是静态方法，this拿不到实例对象&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myPuppy.puppyAge);    <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy.say());       <span class="comment">// 汪汪汪</span></span><br><span class="line"><span class="built_in">console</span>.log(Puppy.statciFunc());  <span class="comment">// 我是静态方法，this拿不到实例对象</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用class可以让我们的代码看起来更像标准的面向对象，构造函数，实例方法，静态方法都有明确的标识。但是他本质只是改变了一种写法，所以可以看做是一种语法糖，如果你去看babel编译后的代码，你会发现他其实也是把class编译成了我们前面的函数类，extends关键字也是使用我们前面的原型继承的方式实现的。</p>
+</blockquote>
+<br>
+
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><ol>
+<li><p>JS中的函数可以作为函数使用，也可以作为类使用</p>
+</li>
+<li><p>作为类使用的函数实例化时需要使用new</p>
+</li>
+<li><p>为了让函数具有类的功能，函数都具有<code>prototype</code>属性。</p>
+</li>
+<li><p>为了让实例化出来的对象能够访问到prototype上的属性和方法，实例对象的 <code>__proto__</code> 指向了类的 <code>prototype</code>。所以<code>prototype</code>是函数的属性，不是对象的。对象拥有的是<code>__proto__</code>，是用来查找<code>prototype</code>的。</p>
+</li>
+<li><p><code>prototype.constructor</code>指向的是构造函数，也就是类函数本身。改变这个指针并不能改变构造函数。</p>
+</li>
+<li><p>对象本身并没有<code>constructor</code>属性，你访问到的是原型链上的<code>prototype.constructor</code>。</p>
+</li>
+<li><p>函数本身也是对象，也具有<code>__proto__</code>，他指向的是JS内置对象Function的原型 Function.prototype 。所以你才能调用func.call, func.apply这些方法，你调用的其实是 Function.prototype.call 和 Function.prototype.apply 。</p>
+</li>
+<li><p><code>prototype</code>本身也是对象，所以他也有<code>__proto__</code>，指向了他父级的prototype。<code>__proto__</code>和<code>prototype</code>的这种链式指向构成了JS的原型链。原型链的最终指向是Object的原型。Object上面原型链是null，即 <code>Object.prototype.__proto__ === null</code>。</p>
+</li>
+<li><p>另外评论区有朋友提到：<code>Function.__proto__ === Function.prototype </code>。这是因为JS中所有函数的原型都是 Function.prototype ，也就是说所有函数都是 Function 的实例。Function 本身也是可以作为函数使用的—- Function()，所以他也是 Function 的一个实例。类似的还有Object，Array等，他们也可以作为函数使用: Object(), Array() 。所以他们本身的原型也是Function.prototype，即 <code>Object.__proto__ === null Function.prototype</code> 。换句话说，这些可以 new 的内置对象其实都是一个类，就像我们的 Puppy 类一样。</p>
+</li>
+<li><p>ES6 的 class 其实是函数类的一种语法糖，书写起来更清晰，但原理是一样的。</p>
+</li>
+</ol>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143726912-1477686856.png" alt="关系图"></p>
+<p><br><br><br></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.toutiao.com/i6797216661217739275/?tt_from=mobile_qq&utm_campaign=client_share&timestamp=1585615280&app=news_article&utm_source=mobile_qq&utm_medium=toutiao_android&req_id=20200331084119010131074200316BEA8F&group_id=6797216661217739275">轻松理解JS中的面向对象，顺便搞懂prototype和<strong>proto</strong></a>、<br>[JS 系列二：深入 constructor、prototype、__proto__、[[Prototype]] 及 原型链](<a class="link"   target="_blank" rel="noopener" href="https://juejin.im/post/6844903924290289671#heading-11" >https://juejin.im/post/6844903924290289671#heading-11<i class="fas fa-external-link-alt"></i></a>)</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：JS面向对象与prototype，__proto__，constructor</li>
+        <li>本文作者：卡布奇诺</li>
+        <li>创建时间：2020-12-12 18:08:08</li>
+        <li>
+            本文链接：https://faith-yin.github.io/2020/12/12/JS面向对象与prototype，-proto-，constructor/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/12/12/WebSocket%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">WebSocket理解与使用</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/12/12/JS%E5%80%BC%E4%BC%A0%E9%80%92%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BC%A0%E9%80%92/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">JS值传递与应用传递</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+        <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DdDKUzkz2isnuXAMlcGGqkxr-gzGzoHsz',
+                appKey: '5JNUXG4aNBfpG806vPJUihcw',
+                meta: 'I22vciS8nGhG6og0ktfhDxrE'.split(','),
+                avatar: 'wavatar',
+                enableQQ: true,
+                placeholder: '快来吐槽吧...',
+                lang: 'zh-CN'.toLowerCase()
+            });
+
+
+            // Valine 评论列表增加"博主"标识
+            const getValineDomTimer = setInterval(() => {
+                const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                if (vcards.length > 0) {
+
+                    let author = '卡布奇诺';
+                    if (author) {
+                        author = author.toLocaleLowerCase();
+                    }
+
+                    for (let vcard of vcards) {
+                        const vnick = vcard.querySelector('.vhead .vnick');
+                        if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                            vcard.classList.add('author');
+                        }
+                    }
+                    clearInterval(getValineDomTimer);
+                } else {
+                    clearInterval(getValineDomTimer);
+                }
+            }, 2000);
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">卡布奇诺</a>
+        </div>
+        
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动 | 主题 <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Java%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-number">1.</span> <span class="nav-text">一、Java中的面向对象与继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JS%E4%B8%AD%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-number">2.</span> <span class="nav-text">二、JS中的面向对象与继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81ES6%E7%9A%84-class"><span class="nav-number">3.</span> <span class="nav-text">三、ES6的 class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">四、总结</span></a></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

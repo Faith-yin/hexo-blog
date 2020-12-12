@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        vue-cli3.x多页面配置 |
+        
+        卡布奇诺
+    </title>
+    <link rel="shortcut icon" href="/images/logo.png">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"faith-yin.github.io","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#D04646","avatar":"/images/photo.png","favicon":"/images/logo.png","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving..."}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":false},"version":"3.0.4"};
+    KEEP.language = {"search":"搜索...","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","tagcloud":"标签云","comment":"评论","home":"首页","archive":"归档","archives":"归档","about":"关于","site_uv":"访问人数","site_pv":"总访问量","links":"友链","link":"友链","top":"顶置","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","copyright":{"title":"本文标题","author":"本文作者","link":"本文链接","create_time":"创建时间","license_title":"版权声明","license_content":"本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="卡布奇诺" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            卡布奇诺
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        首页
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        归档
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        分类
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/tags"
+                    >
+                        标签
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        友链
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/about"
+                    >
+                        关于
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">vue-cli3.x多页面配置</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/photo.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>卡布奇诺</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2020-12-12 18:21:03
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Vue/">Vue</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/vue/">vue</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%A4%9A%E9%A1%B5%E9%9D%A2/">多页面</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><h3 id="1-单页面（SPA-Single-Page-Application）"><a href="#1-单页面（SPA-Single-Page-Application）" class="headerlink" title="1. 单页面（SPA Single-Page-Application）"></a>1. 单页面（SPA Single-Page-Application）</h3><p>（1）入口：单页面只是一张 Web 页面的模式，只有一个 html 文件，整个项目只有一个入口文件。</p>
+<p>（2）资源加载：单页面应用的资源只在开始初始化进入的的时候加载一次（属于全局加载使用），之后的组件跳转不再重新加载。项目初始化压力较大。</p>
+<p>（3）页面跳转：单页面内的页面跳转其实是 vue 运用了 vue-router 实现了组件切换。</p>
+<p>（4）数据传递：可通过全局变量、参数或 store 进行数据交互。 </p>
+<h3 id="2-多页面（MPA-Multi-Page-Application）"><a href="#2-多页面（MPA-Multi-Page-Application）" class="headerlink" title="2. 多页面（MPA Multi-Page-Application）"></a>2. 多页面（MPA Multi-Page-Application）</h3><p>（1）入口：多页面是多张 web 页面的模式，有多个 html 文件，整个项目有多个入口文件。</p>
+<p>（2）资源加载：多页面之间的资源互不影响，npm 依赖包是全局安装，但是在多页面每个入口文件（main.js）手动按需引入。多页面之间资源互不共享，跳转需要资源重新加载，项目初始化压力较小，但多页面之间跳转资源需重新加载，压力相对较大。</p>
+<p>（3）页面跳转：多页面的单个页面内部是 vue-router 形式的组件切换；多页面之间需通过 a 标签跳转页面。</p>
+<p>（4）数据传递：多页面的单个页面内部和 SPA 一致；多页面之间需通过地址栏传参形式进行数据交互。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201181302818-1993906304.png" alt="对比1"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201185858593-1215493062.png" alt="对比2"></p>
+<br>
+
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><h3 id="1-新建项目-demo"><a href="#1-新建项目-demo" class="headerlink" title="1. 新建项目 demo"></a>1. 新建项目 demo</h3><p>（1）通过 <code>vue-cli 3.x</code> 新建项目（vue create demo），删除项目中自带的 <code>App.vue</code> 和 <code>main.js</code></p>
+<p>（2）安装 <code>path</code> 和 <code>glob</code> 依赖包（npm i path -D 、npm i glob -D）</p>
+<h3 id="2-配置入口文件"><a href="#2-配置入口文件" class="headerlink" title="2. 配置入口文件"></a>2. 配置入口文件</h3><p>（1） 在 <code>src</code> 目录下新建 <code>pages</code> 用于配置多页面模块的文件夹。</p>
+<p>（2）在 <code>pages</code> 文件夹下新建多页面模块，在此举栗 <code>home</code> 和 <code>index</code> 文件夹。</p>
+<p>（3）在多页面的模块下（<code>home</code> 和 <code>index</code>），分别新建 <code>App.vue</code> 和 <code>main.js</code>，按原有的内容填充这两个文件，用于每个页面模块的入口。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line"> * @<span class="built_in">Date</span>: <span class="number">2020</span>-<span class="number">12</span>-<span class="number">01</span> <span class="number">13</span>:<span class="number">53</span>:<span class="number">49</span></span><br><span class="line"> * @information: App.vue</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Date: 2020-12-01 13:53:55</span></span><br><span class="line"><span class="comment"> * @information: main.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;../../router/home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;../../store&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-添加全局启动和打包配置"><a href="#3-添加全局启动和打包配置" class="headerlink" title="3. 添加全局启动和打包配置"></a>3. 添加全局启动和打包配置</h3><p>（1）在项目根目录下新建 <code>vue.config.js</code> 配置文件 </p>
+<p>（2）添加入口声明配置 和 打包配置，具体如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Date: 2020-12-01 11:35:31</span></span><br><span class="line"><span class="comment"> * @information: vue.config.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> glob = <span class="built_in">require</span>(<span class="string">&#x27;glob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> titles = &#123;</span><br><span class="line">  home: <span class="string">&#x27;这是home标题&#x27;</span>,</span><br><span class="line">  index: <span class="string">&#x27;这是index标题&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取pages文件夹下的文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getEntry</span>(<span class="params">globPath</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> entries = &#123;&#125;, tmp;</span><br><span class="line">  <span class="comment">// 读取js文件</span></span><br><span class="line">  glob.sync(globPath+<span class="string">&#x27;js&#x27;</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">entry</span>) </span>&#123;</span><br><span class="line">    tmp = entry.split(<span class="string">&#x27;/&#x27;</span>).splice(-<span class="number">3</span>)</span><br><span class="line">    entries[tmp[<span class="number">1</span>]] = &#123;</span><br><span class="line">      entry,</span><br><span class="line">      template: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      filename: tmp[<span class="number">1</span>] + <span class="string">&#x27;.html&#x27;</span>,</span><br><span class="line">      title: titles[tmp[<span class="number">1</span>]],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> entries</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> htmls = getEntry(<span class="string">&#x27;./src/pages/**/*.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  pages: htmls,</span><br><span class="line">  publicPath: <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment">// 打包后的文件夹名称，默认dist</span></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    open: <span class="literal">true</span>,</span><br><span class="line">    hot: <span class="literal">true</span>,</span><br><span class="line">    index: <span class="string">&#x27;./index.html&#x27;</span>, <span class="comment">// 默认启动页面</span></span><br><span class="line">    host: <span class="string">&#x27;0.0.0.0&#x27;</span>,</span><br><span class="line">    port: <span class="number">8090</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment">// 生产环境是否生成 sourceMap 文件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="三、爬坑注意"><a href="#三、爬坑注意" class="headerlink" title="三、爬坑注意"></a>三、爬坑注意</h2><h3 id="1-项目目录划分"><a href="#1-项目目录划分" class="headerlink" title="1. 项目目录划分"></a>1. 项目目录划分</h3><p>（1）将 <code>components</code> 、<code>router</code>、<code>views</code>、<code>store</code> 、静态数据配置层、业务层等文件结构按照多页面模块严格划分，多页面之间不容有业务上的耦合，防止进坑。</p>
+<p>（2）对于每个页面模块所用到的资源按需引入，减轻模块加载压力。</p>
+<h3 id="2-项目目录及打包的-html-文件如图"><a href="#2-项目目录及打包的-html-文件如图" class="headerlink" title="2. 项目目录及打包的 html 文件如图"></a>2. 项目目录及打包的 html 文件如图</h3><p>（1）项目访问地址方式：【<a class="link"   target="_blank" rel="noopener" href="http://localhost:8090/home.html#/about%E3%80%91" >http://localhost:8090/home.html#/about】<i class="fas fa-external-link-alt"></i></a> 先指定要访问的静态 html 文件，再添加此页面下的路由地址即可。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182116492-1947954617.png" alt="项目 pages 文件夹"></p>
+<p>项目 pages 文件夹</p>
+<br>
+
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182158294-281140356.png" alt="home.html 文"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182206734-111809435.png" alt="index.html"></p>
+<p>项目打包后的多页面生成的 html 文件</p>
+<p><br><br><br></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：vue-cli3.x多页面配置</li>
+        <li>本文作者：卡布奇诺</li>
+        <li>创建时间：2020-12-12 18:21:03</li>
+        <li>
+            本文链接：https://faith-yin.github.io/2020/12/12/vue-cli3-x多页面配置/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/12/12/File%E3%80%81Blob%E3%80%81dataURL%E5%92%8Ccanvas%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E8%BD%AC%E6%8D%A2/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">File、Blob、dataURL和canvas的应用与转换</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    
+        
+    <div class="valine-container">
+        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+        <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DdDKUzkz2isnuXAMlcGGqkxr-gzGzoHsz',
+                appKey: '5JNUXG4aNBfpG806vPJUihcw',
+                meta: 'I22vciS8nGhG6og0ktfhDxrE'.split(','),
+                avatar: 'wavatar',
+                enableQQ: true,
+                placeholder: '快来吐槽吧...',
+                lang: 'zh-CN'.toLowerCase()
+            });
+
+
+            // Valine 评论列表增加"博主"标识
+            const getValineDomTimer = setInterval(() => {
+                const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                if (vcards.length > 0) {
+
+                    let author = '卡布奇诺';
+                    if (author) {
+                        author = author.toLocaleLowerCase();
+                    }
+
+                    for (let vcard of vcards) {
+                        const vnick = vcard.querySelector('.vhead .vnick');
+                        if (vnick.innerHTML.toLocaleLowerCase() === author) {
+                            vcard.classList.add('author');
+                        }
+                    }
+                    clearInterval(getValineDomTimer);
+                } else {
+                    clearInterval(getValineDomTimer);
+                }
+            }, 2000);
+        </script>
+    </div>
+
+
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">卡布奇诺</a>
+        </div>
+        
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动 | 主题 <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8D%95%E9%A1%B5%E9%9D%A2%EF%BC%88SPA-Single-Page-Application%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1. 单页面（SPA Single-Page-Application）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E9%A1%B5%E9%9D%A2%EF%BC%88MPA-Multi-Page-Application%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">2. 多页面（MPA Multi-Page-Application）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE-demo"><span class="nav-number">2.1.</span> <span class="nav-text">1. 新建项目 demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">2. 配置入口文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%80%E5%90%AF%E5%8A%A8%E5%92%8C%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">3. 添加全局启动和打包配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%88%AC%E5%9D%91%E6%B3%A8%E6%84%8F"><span class="nav-number">3.</span> <span class="nav-text">三、爬坑注意</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E5%88%92%E5%88%86"><span class="nav-number">3.1.</span> <span class="nav-text">1. 项目目录划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%89%93%E5%8C%85%E7%9A%84-html-%E6%96%87%E4%BB%B6%E5%A6%82%E5%9B%BE"><span class="nav-number">3.2.</span> <span class="nav-text">2. 项目目录及打包的 html 文件如图</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.4/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

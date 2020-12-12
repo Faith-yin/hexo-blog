@@ -131,4 +131,1081 @@
         <tag>array</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue中axios跨域请求解决方法</title>
+    <url>/2020/12/12/Vue%E4%B8%ADaxios%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> <strong>跨域</strong> ：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。</p>
+<p>所谓 <strong>同源</strong> 是指，域名，协议，端口均相同，浏览器执行 js 脚本时，会检查这个脚本属于哪个页面，如果不是同源页面，就不会被执行。</p>
+<h3 id="以下举例："><a href="#以下举例：" class="headerlink" title="以下举例："></a>以下举例：</h3><p>（1）<a class="link"   href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   href="http://www.123.com/server.php" >http://www.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （非跨域）</p>
+<p>（2）<a class="link"   href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   href="http://www.456.com/server.php" >http://www.456.com/server.php<i class="fas fa-external-link-alt"></i></a> （主域名不同:123/456，跨域）</p>
+<p>（3）<a class="link"   href="http://abc.123.com/index.html" >http://abc.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   href="http://def.123.com/server.php" >http://def.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （子域名不同:abc/def，跨域）</p>
+<p>（4）<a class="link"   href="http://www.123.com:8080/index.html" >http://www.123.com:8080/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   href="http://www.123.com:8081/server.php" >http://www.123.com:8081/server.php<i class="fas fa-external-link-alt"></i></a> （端口不同:8080/8081，跨域）</p>
+<p>（5）<a class="link"   href="http://www.123.com/index.html" >http://www.123.com/index.html<i class="fas fa-external-link-alt"></i></a> 调用 <a class="link"   href="https://www.123.com/server.php" >https://www.123.com/server.php<i class="fas fa-external-link-alt"></i></a> （协议不同:http/https，跨域）</p>
+<p>（6）localhost和127.0.0.1虽然都指向本机，但也属于跨域。</p>
+<p>　　</p>
+<h3 id="一，前端解决之-代理"><a href="#一，前端解决之-代理" class="headerlink" title="一，前端解决之 代理"></a>一，前端解决之 代理</h3><p>仅开发环境下建议如此。。</p>
+<h4 id="1-vue-cli-2-x-版本解决方法如下"><a href="#1-vue-cli-2-x-版本解决方法如下" class="headerlink" title="1.  vue-cli 2.x 版本解决方法如下"></a>1.  vue-cli 2.x 版本解决方法如下</h4><p>（1） Vue 的 config 文件夹下的 index.js 文件中，在 proxyTable<br>对象中书写跨域配置项：将以  /api 开头的请求地址基础URL替换为 <a class="link"   href="http://localhost:8888/" >http://localhost:8888<i class="fas fa-external-link-alt"></i></a> </p>
+<p>（2）将 axios 的 baseURL 改为 /api </p>
+<p> <img src="https://img2020.cnblogs.com/blog/1855591/202003/1855591-20200308174002544-1723905577.png"></p>
+<p> <img src="https://img2020.cnblogs.com/blog/1855591/202003/1855591-20200308174512674-687478051.png"></p>
+<h4 id="2-vue-cli-3-x-版本解决方法如下"><a href="#2-vue-cli-3-x-版本解决方法如下" class="headerlink" title="2.  vue-cli 3.x 版本解决方法如下"></a>2.  vue-cli 3.x 版本解决方法如下</h4><p>（1）在项目根目录下创建全局配置文件 vue.config.js</p>
+<p>（2）在配置文件中书写跨域配置（如下图）</p>
+<p>（3）将 axios 的 baseURL 改为 /api </p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202008/1855591-20200830141057452-2064672090.png"></p>
+<h3 id="二，后端springboot项目解决之-配置项"><a href="#二，后端springboot项目解决之-配置项" class="headerlink" title="二，后端springboot项目解决之 配置项"></a>二，后端springboot项目解决之 配置项</h3><p>推荐在服务端进行跨域相关配置，在项目中新建允许跨域配置类，如下图。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202008/1855591-20200830141622702-1420880345.png"></p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>跨域</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>moment插件的使用姿势</title>
+    <url>/2020/12/12/moment%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8%E5%A7%BF%E5%8A%BF/</url>
+    <content><![CDATA[<h3 id="日期格式化："><a href="#日期格式化：" class="headerlink" title="日期格式化："></a>日期格式化：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> moment().format(<span class="string">&#x27;MMMM Do YYYY, h:mm:ss a&#x27;</span>); <span class="comment">// 三月 7日 2020, 11:59:47 中午</span></span><br><span class="line"><span class="number">2</span> </span><br><span class="line"><span class="number">3</span> moment().format(<span class="string">&#x27;dddd&#x27;</span>);                    <span class="comment">// 星期六</span></span><br><span class="line"><span class="number">4</span> </span><br><span class="line"><span class="number">5</span> moment().format(<span class="string">&quot;MMM Do YY&quot;</span>);               <span class="comment">// 3月 7日 20</span></span><br><span class="line"><span class="number">6</span> </span><br><span class="line"><span class="number">7</span> moment().format(<span class="string">&#x27;YYYY [escaped] YYYY&#x27;</span>);     <span class="comment">// 2020 escaped 2020</span></span><br><span class="line"><span class="number">8</span> </span><br><span class="line"><span class="number">9</span> moment().format();                          <span class="comment">// 2020-03-07T11:59:47+08:00</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="相对时间："><a href="#相对时间：" class="headerlink" title="相对时间："></a>相对时间：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> moment(<span class="string">&quot;20111031&quot;</span>, <span class="string">&quot;YYYYMMDD&quot;</span>).fromNow(); <span class="comment">// 8 年前</span></span><br><span class="line"><span class="number">2</span> </span><br><span class="line"><span class="number">3</span> moment(<span class="string">&quot;20120620&quot;</span>, <span class="string">&quot;YYYYMMDD&quot;</span>).fromNow(); <span class="comment">// 8 年前</span></span><br><span class="line"><span class="number">4</span> </span><br><span class="line"><span class="number">5</span> moment().startOf(<span class="string">&#x27;day&#x27;</span>).fromNow();        <span class="comment">// 12 小时前</span></span><br><span class="line"><span class="number">6</span> </span><br><span class="line"><span class="number">7</span> moment().endOf(<span class="string">&#x27;day&#x27;</span>).fromNow();          <span class="comment">// 12 小时内</span></span><br><span class="line"><span class="number">8</span> </span><br><span class="line"><span class="number">9</span> moment().startOf(<span class="string">&#x27;hour&#x27;</span>).fromNow();       <span class="comment">// 1 小时前</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="日历时间："><a href="#日历时间：" class="headerlink" title="日历时间："></a>日历时间：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> moment().subtract(<span class="number">10</span>, <span class="string">&#x27;days&#x27;</span>).calendar(); <span class="comment">// 2020/02/26</span></span><br><span class="line"> <span class="number">2</span> </span><br><span class="line"> <span class="number">3</span> moment().subtract(<span class="number">6</span>, <span class="string">&#x27;days&#x27;</span>).calendar();  <span class="comment">// 上星期日11:59</span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> moment().subtract(<span class="number">3</span>, <span class="string">&#x27;days&#x27;</span>).calendar();  <span class="comment">// 上星期三11:59</span></span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> moment().subtract(<span class="number">1</span>, <span class="string">&#x27;days&#x27;</span>).calendar();  <span class="comment">// 昨天11:59</span></span><br><span class="line"> <span class="number">8</span> </span><br><span class="line"> <span class="number">9</span> moment().calendar();                      <span class="comment">// 今天11:59</span></span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> moment().add(<span class="number">1</span>, <span class="string">&#x27;days&#x27;</span>).calendar();       <span class="comment">// 明天11:59</span></span><br><span class="line"><span class="number">12</span> </span><br><span class="line"><span class="number">13</span> moment().add(<span class="number">3</span>, <span class="string">&#x27;days&#x27;</span>).calendar();       <span class="comment">// 下星期二11:59</span></span><br><span class="line"><span class="number">14</span> </span><br><span class="line"><span class="number">15</span> moment().add(<span class="number">10</span>, <span class="string">&#x27;days&#x27;</span>).calendar();      <span class="comment">// 2020/03/17</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="其他格式："><a href="#其他格式：" class="headerlink" title="其他格式："></a>其他格式：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> moment.locale();         <span class="comment">// zh-cn</span></span><br><span class="line"> <span class="number">2</span> </span><br><span class="line"> <span class="number">3</span> moment().format(<span class="string">&#x27;LT&#x27;</span>);   <span class="comment">// 11:59</span></span><br><span class="line"> <span class="number">4</span> </span><br><span class="line"> <span class="number">5</span> moment().format(<span class="string">&#x27;LTS&#x27;</span>);  <span class="comment">// 11:59:47</span></span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> moment().format(<span class="string">&#x27;L&#x27;</span>);    <span class="comment">// 2020/03/07</span></span><br><span class="line"> <span class="number">8</span> </span><br><span class="line"> <span class="number">9</span> moment().format(<span class="string">&#x27;l&#x27;</span>);    <span class="comment">// 2020/3/7</span></span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> moment().format(<span class="string">&#x27;LL&#x27;</span>);   <span class="comment">// 2020年3月7日</span></span><br><span class="line"><span class="number">12</span> </span><br><span class="line"><span class="number">13</span> moment().format(<span class="string">&#x27;ll&#x27;</span>);   <span class="comment">// 2020年3月7日</span></span><br><span class="line"><span class="number">14</span> </span><br><span class="line"><span class="number">15</span> moment().format(<span class="string">&#x27;LLL&#x27;</span>);  <span class="comment">// 2020年3月7日中午11点59分</span></span><br><span class="line"><span class="number">16</span> </span><br><span class="line"><span class="number">17</span> moment().format(<span class="string">&#x27;lll&#x27;</span>);  <span class="comment">// 2020年3月7日 11:59</span></span><br><span class="line"><span class="number">18</span> </span><br><span class="line"><span class="number">19</span> moment().format(<span class="string">&#x27;LLLL&#x27;</span>); <span class="comment">// 2020年3月7日星期六中午11点59分</span></span><br><span class="line"><span class="number">20</span> </span><br><span class="line"><span class="number">21</span> moment().format(<span class="string">&#x27;llll&#x27;</span>); <span class="comment">// 2020年3月7日星期六 11:59</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="常用格式："><a href="#常用格式：" class="headerlink" title="常用格式："></a>常用格式：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">moment().format(<span class="string">&quot;YYYY年MM月DD日 HH时mm分ss秒&quot;</span>); <span class="comment">//2020年04月20日 18时59分50秒</span></span><br><span class="line"></span><br><span class="line">moment(<span class="number">1711641720000</span>).format(<span class="string">&#x27;YYYY-MM-DD HH:mm:ss&#x27;</span>); <span class="comment">//2020-04-20 18:59:50（24小时制）</span></span><br><span class="line"> </span><br><span class="line">moment(<span class="number">1711641720000</span>).format(<span class="string">&#x27;YYYY-MM-DD hh:mm:ss&#x27;</span>); <span class="comment">//2020-04-20 06:59:50（12小时制）</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p><a class="link"   href="http://momentjs.cn/docs/" >moment 文档<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
+        <tag>moment</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web前端存储之sessionStorage和localStorage</title>
+    <url>/2020/12/12/Web%E5%89%8D%E7%AB%AF%E5%AD%98%E5%82%A8%E4%B9%8BsessionStorage%E5%92%8ClocalStorage/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>对浏览器来说，使用 Web Storage 存储键值对比存储 Cookie 方式更直观，而且容量更大，它包含两种：localStorage 和 sessionStorage</li>
+</ol>
+<p>localStorage和sessionStorage的存储数据大小一般都是：5MB</p>
+<ul>
+<li><p>sessionStorage（临时存储） ：为每一个数据源维持一个存储区域，在浏览器的此标签页打开期间存在，包括此标签页的页面重新加载</p>
+</li>
+<li><p>localStorage（长期存储） ：与 sessionStorage 一样，但是浏览器关闭后，数据依然会一直存在</p>
+</li>
+</ul>
+<blockquote>
+<p>用法说明：sessionStorage 和 localStorage 的用法基本一致，引用类型的值需要转换成 JSON 进行存储</p>
+</blockquote>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><h3 id="1-保存数据到本地"><a href="#1-保存数据到本地" class="headerlink" title="1. 保存数据到本地"></a>1. 保存数据到本地</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    birthday: <span class="string">&#x27;2000-01-01&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sessionStorage.setItem(<span class="string">&#x27;userInfo&#x27;</span>, <span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line"></span><br><span class="line"><span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;userInfo&#x27;</span>, <span class="built_in">JSON</span>.stringify(obj))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：若第二次存储的key值与第一次存储的key值相同，则会覆盖第一次的值。</p>
+</blockquote>
+<h3 id="2-从本地读取数据"><a href="#2-从本地读取数据" class="headerlink" title="2. 从本地读取数据"></a>2. 从本地读取数据</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = <span class="built_in">JSON</span>.parse(sessionStorage.getItem(<span class="string">&#x27;userInfo&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;userInfo&#x27;</span>))</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 3. 从本地删除指定 key 值</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">sessionStorage.removeItem(<span class="string">&#x27;userInfo&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">localStorage</span>.removeItem(<span class="string">&#x27;userInfo&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-清空存储的所有值"><a href="#4-清空存储的所有值" class="headerlink" title="4. 清空存储的所有值"></a>4. 清空存储的所有值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">sessionStorage.clear()</span><br><span class="line"></span><br><span class="line"><span class="built_in">localStorage</span>.clear()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>前端存储</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS常用正则表达式</title>
+    <url>/2020/12/12/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="一-常用正则"><a href="#一-常用正则" class="headerlink" title="一 常用正则"></a>一 常用正则</h2><ol>
+<li> <code>\</code> ：将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。</li>
+</ol>
+<p>　　例如：”\d” 匹配数字字符，而不是匹配字母d。</p>
+<ol start="2">
+<li> <code>^</code>  ：匹配输入的开始位置。如果多行标志被设置为 true，那么也匹配换行符后紧跟的位置。</li>
+</ol>
+<p>　　例如：/^A/ 并不会匹配 “an A” 中的 ‘A’，但是会匹配 “An E” 中的 ‘A’。</p>
+<ol start="3">
+<li><code>$</code>  ：匹配输入的结束位置。如果多行标志被设置为 true，那么也匹配换行符前的位置。</li>
+</ol>
+<p>　　例如：/t$/ 并不会匹配 “eater” 中的 ‘t’，但是会匹配 “eat” 中的 ‘t’。</p>
+<ol start="4">
+<li> <code>*</code>  ：匹配一个表达式 0 次或多次，等价于 {0, }。</li>
+</ol>
+<p>　　例如：/bo*/ 会匹配 “A ghost boooooed” 中的 ‘booooo’ 和 “A bird warbled” 中的 ‘b’，但是在 “A goat grunted” 中不会匹配任何内容。</p>
+<ol start="5">
+<li><code>+</code>  ：匹配前面一个表达式 1 次或多次，等价于{1, }。</li>
+</ol>
+<p>　　例如：/a+/ 会匹配 “candy” 中的 ‘a’ 和 “caaaaaaandy” 中所有的 ‘a’，但是在 “cndy” 中不会匹配任何内容。</p>
+<ol start="6">
+<li> <code>?</code>   ：匹配前面一个表达式 0 次或 1 次，等价于{0, 1}。</li>
+</ol>
+<p>　　例如：/e?le?/ 匹配 “angel” 中的 ‘el’、”angle” 中的 ‘le’ 以及 “oslo’ 中的 ‘l’。</p>
+<p>　　如果紧跟在任何量词 *、 +、? 或 {} 的后面，将会使量词变为非贪婪（匹配尽量少的字符），和缺省使用的贪婪模式（匹配尽可能多的字符）正好相反。例如，对 “123abc” 使用 /\d+/ 将会匹配 “123”，而使用 /\d+?/ 则只会匹配到 “1”。</p>
+<ol start="7">
+<li>  <code>.</code>  ：（小数点）默认匹配换行符之外的任何单个字符。</li>
+</ol>
+<p>　　例如：/.n/ 将会匹配 “nay, an apple is on the tree” 中的 ‘an’ 和 ‘on’，但是不会匹配 ‘nay’。如果 s (“dotAll”) 标志位被设为 true，它也会匹配换行符。</p>
+<p>像下面的8-12例子( )展示的那样，它会匹配 ‘x’ 并且记住匹配项。其中括号被称为捕获括号。</p>
+<ol start="8">
+<li> <code>(x)</code>   ：模式 /(foo) (bar) \1 \2/ 中的 ‘(foo)’ 和 ‘(bar)’ 匹配并记住字符串 “foo bar foo bar” 中前两个单词。模式中的 \1 和 \2 表示第一个和第二个被捕获括号匹配的子字符串，即 foo 和 bar，匹配了原字符串中的后两个单词。注意 \1、\2、…、\n 是用在正则表达式的匹配环节。而在正则表达式的替换环节，则要使用像 $1、$2、…、$n 这样的语法，例如，’bar foo’.replace(/(…) (…)/, ‘$2 $1’)。$&amp; 表示整个用于匹配的原字符串。</li>
+</ol>
+<ol start="9">
+<li> <code>(?:x)</code>   ：匹配 ‘x’ 但是不记住匹配项。这种括号叫作非捕获括号，使得你能够定义与正则表达式运算符一起使用的子表达式。</li>
+</ol>
+<p>　　　例如：/(?:foo){1,2}/。如果表达式是 /foo{1,2}/，{1,2} 将只应用于 ‘foo’ 的最后一个字符 ‘o’。如果使用非捕获括号，则 {1,2} 会应用于整个 ‘foo’ 单词。</p>
+<ol start="10">
+<li>  <code>x(?=y)</code>  ：匹配 x 仅仅当 x 后面跟着 y 这种叫做先行断言。</li>
+</ol>
+<p>　　例如：/Jack(?=Sprat)/会匹配到’Jack’仅当它后面跟着’Sprat’。/Jack(?=Sprat|Frost)/匹配‘Jack’仅当它后面跟着’Sprat’或者是‘Frost’。但是‘Sprat’和‘Frost’都不是匹配结果的一部分。</p>
+<ol start="11">
+<li> <code>(?&lt;=y)x</code>  ：匹配 x 仅当前面是 y ，这种叫做后行断言。</li>
+</ol>
+<p>　　例如：/(?&lt;=Jack)Sprat/会匹配到’ Sprat ‘仅仅当它前面是’ Jack ‘。/(?&lt;=Jack|Tom)Sprat/匹配‘ Sprat ’仅仅当它前面是’Jack’或者是‘Tom’。但是‘Jack’和‘Tom’都不是匹配结果的一部分。</p>
+<ol start="12">
+<li> <code>x(?!y)</code> ：仅仅当 x 后面不跟着 y 时匹配 x，这种为正否定查找。</li>
+</ol>
+<p>　　例如：仅仅当这个数字后面没有跟小数点的时候，/\d+(?!.)/ 匹配一个数字。正则表达式/\d+(?!.)/.exec(“3.141”)匹配‘141’而不是‘3.141’。</p>
+<ol start="13">
+<li> <code>(?&lt;!y)x</code>  ：仅仅当前面不是 y 时匹配 x ，这种为反否定查找。</li>
+</ol>
+<p>　　例如：仅仅当这个数字前面没有负号的时候，/(?&lt;!-)\d+/ 匹配一个数字。/(?&lt;!-)\d+/.exec(‘3’) 匹配到 “3”.。/(?&lt;!-)\d+/.exec(‘-3’) 因为这个数字前有负号，所以没有匹配到。</p>
+<ol start="14">
+<li> <code>x|y</code>  ：匹配 x 或者 y。</li>
+</ol>
+<p>　　例如：/green|red/匹配“green apple”中的‘green’和“red apple”中的‘red’。</p>
+<ol start="15">
+<li> <code>&#123;n&#125;</code>   ：n 是一个正整数，匹配了前面一个字符刚好出现了 n 次。</li>
+</ol>
+<p>　　例如：/a{2}/ 不会匹配“candy”中的’a’,但是会匹配“caandy”中所有的 a，以及“caaandy”中的前两个’a’。</p>
+<ol start="16">
+<li> <code>&#123;n, &#125;</code>   ：n 是一个正整数，匹配前一个字符至少出现了 n 次。</li>
+</ol>
+<p>　　例如：/a{2,}/ 匹配 “aa”, “aaaa” 和 “aaaaa” 但是不匹配 “a”。</p>
+<ol start="17">
+<li> <code>&#123;n,m&#125;</code>   ：n 和 m 都是整数，匹配前面的字符至少 n 次，最多 m 次。如果这个值是 0，这个值会被忽略。</li>
+</ol>
+<p>　　例如：/a{1, 3}/ 并不匹配“cndy”中的任意字符，匹配“candy”中的a，匹配“caandy”中的前两个a，也匹配“caaaaaaandy”中的前三个a。注意，当匹配”caaaaaaandy“时，匹配的值是“aaa”，即使原始的字符串中有更多的a。</p>
+<ol start="18">
+<li> <code>[xyz]</code>   ：一个字符集合。匹配方括号中的任意字符，包括转义序列。可以使用破折号（-）来指定一个字符范围。对于点（.）和星号（*）这样的特殊符号在一个字符集中没有特殊的意义。他们不必进行转义，不过转义也是起作用的。</li>
+</ol>
+<p>　　例如：[abcd] 和[a-d]是一样的。他们都匹配”brisket”中的‘b’,也都匹配“city”中的‘c’。/[a-z.]+/ 和/[\w.]+/与字符串“test.i.ng”匹配。</p>
+<ol start="19">
+<li> <code>[^xyz]</code>   ：一个反向字符集。也就是说， 它匹配任何没有包含在方括号中的字符。可以使用破折号（-）来指定一个字符范围。任何普通字符在这里都是起作用的。</li>
+</ol>
+<p>　　例如：[^abc] 和 [^a-c] 是一样的。他们匹配”brisket”中的‘r’，也匹配“chop”中的‘h’。</p>
+<ol start="20">
+<li> <code>[\b]</code>  ：匹配一个退格(U+0008)。（不要和\b混淆了。）</li>
+</ol>
+<ol start="21">
+<li> <code>\b</code>   ：匹配一个词的边界。一个词的边界就是一个词不被另外一个“字”字符跟随的位置或者前面跟其他“字”字符的位置，例如在字母和空格之间。注意，匹配中不包括匹配的字边界。换句话说，一个匹配的词的边界的内容的长度是0。（不要和[\b]混淆了）</li>
+</ol>
+<p>　　例如：使用”moon”举例：<br>　　　　/\bm/匹配“moon”中的‘m’；<br>　　　　/oo\b/并不匹配”moon”中的’oo’，因为’oo’被一个“字”字符’n’紧跟着。<br>　　　　/oon\b/匹配”moon”中的’oon’，因为’oon’是这个字符串的结束部分。这样他没有被一个“字”字符紧跟着。</p>
+<ol start="22">
+<li> <code>\B</code>  ：匹配一个非单词边界。匹配如下情况：（1）字符串第一个字符为非“字”字符（2）字符串最后一个字符为非“字”字符（3）两个单词字符之间（4）两个非单词字符之间（5）空字符串</li>
+</ol>
+<p>　　例如：/\B../匹配”noonday”中的’oo’, 而/y\B../匹配”possibly yesterday”中的’yes‘。</p>
+<ol start="23">
+<li> <code>\cX</code>  ：当X是处于A到Z之间的字符的时候，匹配字符串中的一个控制符。</li>
+</ol>
+<p>　　例如：/\cM/ 匹配字符串中的 control-M (U+000D)。</p>
+<ol start="24">
+<li> <code>\d</code>  ：匹配一个数字，等价于[0,9]。</li>
+</ol>
+<p>　　例如： /\d/ 或者 /[0-9]/ 匹配”B2 is the suite number.”中的’2’。</p>
+<ol start="25">
+<li> <code>\D</code>  ：匹配一个非数字字符，等价于[^0,9]。</li>
+</ol>
+<p>　　例如：/\D/ 或者 /[^0-9]/ 匹配”B2 is the suite number.”中的’B’ 。</p>
+<ol start="26">
+<li> <code>\f</code>  ：匹配一个换页符 (U+000C)。</li>
+</ol>
+<ol start="27">
+<li> <code>\n</code>  ：匹配一个换行符 (U+000A)。</li>
+</ol>
+<ol start="28">
+<li> <code>\r</code>  ：匹配一个回车符 (U+000D)。</li>
+</ol>
+<ol start="29">
+<li> <code>\s</code>  ：匹配一个空白字符，包括空格、制表符、换页符和换行符，等价于[ \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。</li>
+</ol>
+<p>　　例如：/\s\w*/ 匹配”foo bar.”中的’ bar’。</p>
+<ol start="30">
+<li> <code>\S</code>  ：匹配一个非空白字符，等价于[^ \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。</li>
+</ol>
+<p>　　例如：/\S\w*/ 匹配”foo bar.”中的’foo’。</p>
+<ol start="31">
+<li> <code>\t</code>  ：匹配一个水平制表符 (U+0009)。</li>
+</ol>
+<ol start="32">
+<li> <code>\v</code>  ：匹配一个垂直制表符 (U+000B)。</li>
+</ol>
+<ol start="33">
+<li> <code>\w</code>  ：匹配一个单字字符（字母、数字或者下划线）。等价于 [A-Za-z0-9_]。</li>
+</ol>
+<p>　　例如：/\w/ 匹配 “apple,” 中的 ‘a’，”$5.28,”中的 ‘5’ 和 “3D.” 中的 ‘3’。</p>
+<ol start="34">
+<li> <code>\W</code>  ：匹配一个非单词字符，等价于[^A-Za-z0-9_]。</li>
+</ol>
+<p>　　例如：/\W/ 或者 /[^A-Za-z0-9_]/ 匹配 “50%.” 中的 ‘%’。</p>
+<ol start="35">
+<li> <code>\n</code>  ：在正则表达式中，它返回最后的第n个子捕获匹配的子字符串(捕获的数目以左括号计数)。</li>
+</ol>
+<ol start="36">
+<li> <code>\0</code> ： 匹配 NULL（U+0000）字符， 不要在这后面跟其它小数，因为 \0<digits> 是一个八进制转义序列。</li>
+</ol>
+<ol start="37">
+<li> <code>\xhh</code>  ：匹配一个两位十六进制数（\x00-\xFF）表示的字符。</li>
+</ol>
+<ol start="38">
+<li> <code>\uhhhh</code>  ：匹配一个四位十六进制数表示的 UTF-16 代码单元。</li>
+</ol>
+<ol start="39">
+<li> <code>\u&#123;hhhh&#125;</code>  或  <code>\uhhhhh</code>  ：(仅当设置了u标志时）匹配一个十六进制数表示的 Unicode 字符。</li>
+</ol>
+<h2 id="二-正则表达式标志"><a href="#二-正则表达式标志" class="headerlink" title="二 正则表达式标志"></a>二 正则表达式标志</h2><ol>
+<li><p> <code>g</code> ：全局搜索</p>
+</li>
+<li><p> <code>i</code> ：不区分大小写搜索</p>
+</li>
+<li><p> <code>m</code> ： 多行搜索</p>
+</li>
+<li><p> <code>s</code> ： 允许 . 匹配换行字符</p>
+</li>
+<li><p> <code>u</code> ：使用Unicode码的模式进行匹配</p>
+</li>
+<li><p><code>y</code> ： 执行“粘性(sticky)”搜索,匹配从目标字符串的当前位置开始。</p>
+</li>
+</ol>
+<h2 id="三-使用括号的子字符串匹配"><a href="#三-使用括号的子字符串匹配" class="headerlink" title="三 使用括号的子字符串匹配"></a>三 使用括号的子字符串匹配</h2><p>一个正则表达式模式使用括号，将导致相应的子匹配被记住。例如，/a(b)c /可以匹配字符串“abc”，并且记得“b”。回调这些括号中匹配的子串，使用数组元素[1],……[n]。</p>
+<p>使用括号匹配的子字符串的数量是无限的。返回的数组中保存所有被发现的子匹配。下面的例子说明了如何使用括号的子字符串匹配。</p>
+<p>例如：下面的脚本使用replace()方法来转换字符串中的单词。在匹配到的替换文本中，脚本使用替代的$ 1,$ 2表示第一个和第二个括号的子字符串匹配。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/(\w+)\s(\w+)/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;John Smith&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newstr = str.replace(re, <span class="string">&quot;$2, $1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newstr);  <span class="comment">// Smith, John</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四-使用正则表达式的方法"><a href="#四-使用正则表达式的方法" class="headerlink" title="四 使用正则表达式的方法"></a>四 使用正则表达式的方法</h2><ol>
+<li> <code>exec</code> ：一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回 null）。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">&quot;mom and dad and baby&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/mom( and dad( and baby)?)?/gi</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> matches = pattern.exec(text);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matches.index); <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matches.input); <span class="comment">//mom and dad and baby</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]);    <span class="comment">//mom and dad and baby</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matches[<span class="number">1</span>]);    <span class="comment">//and dad and baby</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(matches[<span class="number">2</span>]);    <span class="comment">//and baby</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li> <code>test</code> ：一个在字符串中测试是否匹配的RegExp方法，它返回 true 或 false。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;374829348791&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> re = <span class="regexp">/\D/</span>;      <span class="comment">//  \D代表非数字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( re.test(str) )&#123;   <span class="comment">// 返回true,代表在字符串中找到了非数字。</span></span><br><span class="line"></span><br><span class="line">    alert(<span class="string">&#x27;不全是数字&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">    alert(<span class="string">&#x27;全是数字&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li> <code>match</code> ：一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。</li>
+</ol>
+<p>“186a619b28”.match(/\d+/g); // [“186”,”619”,”28”] </p>
+<ol start="4">
+<li> <code>matchAll</code> ：一个在字符串中执行查找所有匹配的String方法，它返回一个迭代器（iterator）。</li>
+</ol>
+<ol start="5">
+<li> <code>search</code> ：一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;abcdef&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> re = <span class="regexp">/B/i</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//var re = new RegExp(&#x27;B&#x27;,&#x27;i&#x27;); 也可以这样写</span></span><br><span class="line"></span><br><span class="line">alert( str.search(re) ); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+
+<ol start="6">
+<li> <code>replace</code> ：一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">replace 方法去除字符串 前 中 后 的空格：</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> val = <span class="string">&#x27;  这是  一段  测试文字  &#x27;</span></span><br><span class="line"></span><br><span class="line">val = val.trim().replace(<span class="regexp">/\s/g</span>,<span class="string">&quot;&quot;</span>) <span class="comment">// 这是一段测试文字</span></span><br></pre></td></tr></table></figure>
+
+
+<ol start="7">
+<li> <code>split</code> ：一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的 String 方法。</li>
+</ol>
+<h2 id="五-常用校验方法"><a href="#五-常用校验方法" class="headerlink" title="五 常用校验方法"></a>五 常用校验方法</h2><ol>
+<li>金额格式校验替换</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">moneyReplace</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!val) <span class="keyword">return</span> val</span><br><span class="line">  <span class="comment">// 若第一字符是 .  则替换为 0.</span></span><br><span class="line">  val = <span class="built_in">String</span>(val).replace(<span class="regexp">/^\./</span>, <span class="string">&quot;0.&quot;</span>)</span><br><span class="line">  <span class="comment">// 保证 . 只出现一次 ， 而不能出现两次或两次以上</span></span><br><span class="line">  val = val.replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;$#$&quot;</span>).replace(<span class="regexp">/\./g</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;$#$&quot;</span>, <span class="string">&quot;.&quot;</span>)</span><br><span class="line">  <span class="comment">// 只能输入两个小数</span></span><br><span class="line">  val = val.replace(<span class="regexp">/^(\d+)\.(\d\d).*$/</span>, <span class="string">&quot;$1.$2&quot;</span>)</span><br><span class="line">  <span class="comment">// 如果没有小数点，首位不能为类似于 01、02的金额</span></span><br><span class="line">  <span class="keyword">if</span>((val.indexOf(<span class="string">&quot;.&quot;</span>) == -<span class="number">1</span>) &amp;&amp; val != <span class="number">0</span>) &#123;</span><br><span class="line">    val = <span class="built_in">parseFloat</span>(val)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Number</span>.isNaN(<span class="built_in">Number</span>(val)) ? <span class="string">&#x27;0.00&#x27;</span> : val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">moneyReplace(<span class="number">12.345</span>) <span class="comment">// 12.34</span></span><br><span class="line"></span><br><span class="line">moneyReplace(<span class="number">.789</span>) <span class="comment">// 0.78</span></span><br><span class="line"></span><br><span class="line">moneyReplace(<span class="string">&#x27;abc&#x27;</span>) <span class="comment">// 0.00</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   href="https://www.cnblogs.com/moqiutao/articles/6513628.html" >JS正则表达式详解<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>正则</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS值传递与应用传递</title>
+    <url>/2020/12/12/JS%E5%80%BC%E4%BC%A0%E9%80%92%E4%B8%8E%E5%BA%94%E7%94%A8%E4%BC%A0%E9%80%92/</url>
+    <content><![CDATA[<p>JS 有7中基本数据类型：Boolean、Null、Undefined、Number、BigInt、String、Symbol。这些基本数据类型都是通过值传递的方式。</p>
+<p>值得注意的是还有另外三种类型: Array、Function 和 Object，它们通过引用来传递。从底层技术上看，它们三都是对象。</p>
+<h3 id="一、基本数据类型"><a href="#一、基本数据类型" class="headerlink" title="一、基本数据类型"></a>一、基本数据类型</h3><blockquote>
+<p>基本类型存放在栈区，访问时按值访问，赋值是按照普通方式赋值</p>
+</blockquote>
+<ol>
+<li>如果一个基本的数据类型绑定到某个变量，我们可以认为该变量包含这个基本数据类型的值。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> y = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> z = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>当我们使用 = 对这些基本数据类型进行过赋值操作时，实际上是将对应的值拷贝了一份，然后赋值给新的变量。我们把它称作值传递。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">11</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&#x27;ab&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> aa = a</span><br><span class="line"><span class="keyword">let</span> bb = b</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a, b, aa, bb) <span class="comment">// 11, ab, 11, ab</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>a 和 aa 都包含 11， 并且他们是相互独立的拷贝，互不干涉，如果我们将 a 的值改变，aa 不会受到影响。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1111</span></span><br><span class="line"><span class="built_in">console</span>.log(a, aa) <span class="comment">// 1111, 11</span></span><br><span class="line"></span><br><span class="line">b = <span class="string">&#x27;abcd&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(b, bb) <span class="comment">// abcd, ab</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="二、引用数据类型"><a href="#二、引用数据类型" class="headerlink" title="二、引用数据类型"></a>二、引用数据类型</h3><blockquote>
+<p>引用类型指的是对象。可以拥有属性和方法，并且我们可以修改其属性和方法。引用对象存放的方式是：在栈中存放对象变量标示名称和该对象在堆中的存放地址，在堆中存放数据。</p>
+</blockquote>
+<blockquote>
+<p>对象使用的是引用赋值。当我们把一个对象赋值给一个新的变量时，赋的其实是该对象的在堆中的地址，而不是堆中的数据。也就是两个对象指向的是同一个存储空间，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，两个对象是联动的。</p>
+</blockquote>
+<p>如果一个变量绑定到一个非基本数据类型(Array, Function, Object)，那么它只记录了一个内存地址，该地址存放了具体的数据。注意之前提到指向基本数据类型的变量相当于包含了数据，而现在指向非基本数据类型的变量本身是不包含数据的。</p>
+<ol>
+<li>对象在内存中被创建，当我们声明 arr = []，我们在内存中创建了一个数组。arr 记录的是该内存的地址</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>当执行完之后，内存中创建了一个空的数组对象，其内存地址为 #001 ，arr指向该地址</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arr</td>
+<td>#001</td>
+<td>[1, 2, 3]</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>对象是通过引用传递，而不是值传递。也就是说，变量赋值只会将地址传递过去</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr2 = arr</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr2) <span class="comment">// [1, 2, 3], [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arr</td>
+<td>#001</td>
+<td>[1, 2, 3]</td>
+</tr>
+<tr>
+<td>arr2</td>
+<td>#001</td>
+<td>(↑)</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>arr 和 arr2 指向同一个数组。 如果我们更新 arr，arr2 也会受到影响</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">arr.push(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr2) <span class="comment">// [1, 2, 3, 4], [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arr</td>
+<td>#001</td>
+<td>[1, 2, 3, 4]</td>
+</tr>
+<tr>
+<td>arr2</td>
+<td>#001</td>
+<td>(↑)</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>引用重新赋值：如果我们将一个已经赋值的变量重新赋值，那么它将包含新的数据或则引用地址。如果原来的对象内容没有任何变量去引用，JS就会释放掉原来的对象内存。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// &#123;a: 1&#125;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>obj</td>
+<td>#0001</td>
+<td>{a: 1}</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">obj = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">// &#123;a: 1, b: 2&#125;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(空)</td>
+<td>#0001</td>
+<td>{a: 1}</td>
+</tr>
+<tr>
+<td>obj</td>
+<td>#0002</td>
+<td>{a: 1, b: 2}</td>
+</tr>
+</tbody></table>
+<h3 id="三、-和"><a href="#三、-和" class="headerlink" title="三、== 和 ==="></a>三、== 和 ===</h3><ol>
+<li>对于引用类型的变量，== 和 === 只会判断引用的地址是否相同，而不会判断对象具体里属性以及值是否相同。因此，如果两个变量指向相同的对象，则返回 true</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> aa = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> bb = aa</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(aa === bb) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aa</td>
+<td>#001</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>bb</td>
+<td>#001</td>
+<td>(↑)</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li>如果是不同的对象，即使包含相同的属性和值，也会返回 false</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> aa = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> bb = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(aa === bb) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aa</td>
+<td>#001</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>bb</td>
+<td>#002</td>
+<td>[1, 2]</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>如果想判断两个不同的对象是否真的相同，一个简单的方法就是将它们转换为字符串然后判断(不完美)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="built_in">JSON</span>.stringify(aa)</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="built_in">JSON</span>.stringify(bb)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str === str2) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、函数参数传递"><a href="#四、函数参数传递" class="headerlink" title="四、函数参数传递"></a>四、函数参数传递</h3><ol>
+<li>js 的函数参数传递为值传递。当传入的是 基本类型的参数时：就是复制了份内容给 i 而已，i 与 age 之间没有关系</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setAge</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    alert(i); <span class="comment">// 24</span></span><br><span class="line">    i = <span class="number">18</span>;</span><br><span class="line">    alert(i);<span class="comment">//18,i的改变不会影响外面的age</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> age = <span class="number">24</span>;</span><br><span class="line">setAge(age);</span><br><span class="line">alert(age); <span class="comment">// 24</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>当传入的参数为引用类型时。传进去的是个地址。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    obj.name = <span class="string">&#x27;haha&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">setName(obj2);</span><br><span class="line">alert(obj2.name);    <span class="comment">// haha</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="五、相关面试题"><a href="#五、相关面试题" class="headerlink" title="五、相关面试题"></a>五、相关面试题</h3><blockquote>
+<p>阿里2014年的笔试题</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">fn.c = <span class="number">3</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">    x = <span class="number">4</span></span><br><span class="line">    y.b = <span class="number">5</span></span><br><span class="line">    z.c = <span class="number">6</span></span><br><span class="line">    <span class="keyword">return</span> z</span><br><span class="line">&#125;</span><br><span class="line">test(a, obj, fn)</span><br><span class="line"></span><br><span class="line">alert(a + obj.b + fn.c) <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+
+<p>首先test传递进去的实参中，a是基本类型（，复制了一份值），obj是object（指向地址，你动我也动），fn也当然不是基本类型啦。在执行test的时候，x被赋值为4(跟a没关系，各玩各的，a仍然为1)，y的b被赋值为5，那obj的b也变为5，z的c变为6，那fn的c当然也会是6. 所以alert的结果应该是1+5+6 =12. （其实test不返回z也一样，z仍然改变的）。</p>
+<blockquote>
+<p><a class="link"   href="https://www.cnblogs.com/cench/p/6019453.html" >JS 的引用赋值与传值赋值<i class="fas fa-external-link-alt"></i></a><br><a class="link"   href="https://blog.fundebug.com/2017/08/09/explain_value_reference_in_js/" >JavaScript的值传递和引用传递<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>值与引用传递</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS面向对象与prototype，__proto__，constructor</title>
+    <url>/2020/12/12/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8Eprototype%EF%BC%8C-proto-%EF%BC%8Cconstructor/</url>
+    <content><![CDATA[<h2 id="一、Java中的面向对象与继承"><a href="#一、Java中的面向对象与继承" class="headerlink" title="一、Java中的面向对象与继承"></a>一、Java中的面向对象与继承</h2><ol>
+<li>下面代码中，我们定义了一个小狗类，在类中定义了一个属性和两个方法，一个构造方法用于初始化小狗的年龄 age，一个公有方法 say 用于打印。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Puppy</span></span>&#123;</span><br><span class="line">    int puppyAge;</span><br><span class="line">    </span><br><span class="line">    public <span class="function"><span class="title">Puppy</span>(<span class="params">age</span>)</span>&#123;</span><br><span class="line">      puppyAge = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public <span class="keyword">void</span> <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;汪汪汪&quot;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="2">
+<li>这是一个通用的类，当我们需要一个两岁的小狗的实例是这样写的，这个实例同时具有父类的方法。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Puppy myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line">muPuppy.say(); <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="3">
+<li>以上的类和实例的实现均基于 java 的语法来的，但是相比于相对完善的 java 语法来说，早期的 js 没有 class 关键字啊（以下说 js 没有 class 关键字都是指 ES6 之前的 js ，主要帮助大家理解概念）。JS为了支持面向对象，使用了一种比较曲折的方式，具体如下。</li>
+</ol>
+<h2 id="二、JS中的面向对象与继承"><a href="#二、JS中的面向对象与继承" class="headerlink" title="二、JS中的面向对象与继承"></a>二、JS中的面向对象与继承</h2><ol>
+<li><strong>没有 class，用函数代替</strong> ：早期的 js 没有 class 关键字，是怎么办的呢？对，是用函数来代替，函数不仅能执行普通功能，还能当 class 使用，栗子如下。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="2">
+<li>以上代码实现了一个函数。下面我们就可以生成以上函数的实例了。</li>
+</ol>
+<blockquote>
+<p>构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其首字母大写。构造函数和普通函数的区别在于，使用 new 生成实例的函数就是构造函数，直接调用的就是普通函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> myPuppy = <span class="keyword">new</span> Puppy()</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="3">
+<li><strong>函数本身就是构造函数</strong> ：虽然我们有了小狗的实例，但是不像 java 语法似的可以在类中定义构造函数来不能设置小狗的年龄啊。不慌，其实，充当类使用的函数本身就是构造函数，而且它就是默认的构造函数，下面我们重写以上代码，让构造函数接收函数来初始化小狗的年龄 age 。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构造函数：可接收参数来初始化属性值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化时可以传年龄参数了</span></span><br><span class="line"><span class="keyword">let</span> myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="4">
+<li><strong>构造函数中的 this 指向实例化对象</strong> ：构造函数中的 this 指向需要注意：被作为类使用的函数里面 this 总是指向实例化对象，也就是 myPuppy 。这么设计的目的就是让使用者可以通过构造函数给实例对象设置属性，这时候打印出来看 myPuppy.puppyAge 就是 2 。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(myPuppy.puppyAge)   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="5">
+<li><strong>prototype 上定义实例方法</strong> ：以上 4 点，我们实现了构造函数定义以及实例化。java 语法可以直接在类中定义公共方法来让实例小狗汪汪汪，js 如何办呢？对此，js 给出的解决方案是给构造方法添加一个 <code>prototype</code> 属性，挂载在这上面的方法，实例化时就会给到实例对象。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在构造函数的 prototype 上添加方法</span></span><br><span class="line">Puppy.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例对象调用相应方法</span></span><br><span class="line">myPuppy.say()    <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="6">
+<li><strong>实例方法的查找用 proto</strong> ：以上可能有的同学就会有疑问了，方法在构造函数的 <code>prototype</code> 上，实例对象 myPuppy 怎么会找到 say 方法了呢？我们来打印 myPuppy 。</li>
+</ol>
+<p>（1）当你访问一个对象上没有的属性时，比如 myPuppy.say，对象会去 <code>__proto__</code> 查找。 <code>__proto__</code> 的值就等于父类的 prototype , <code>myPuppy.__proto__</code> 指向了 Puppy.prototype。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143617741-537961056.png" alt="实例方法的查找"></p>
+<p>（2）如果你访问的属性在 <code>Puppy.prototype</code> 也不存在，那又会继续往 <code>Puppy.prototype.__proto__</code> 上找，这时候其实就找到了 <code>Object.prototype</code> 了，<code>Object.prototype</code> 再往上找就没有了，也就是 null，这其实就是 <code>原型链</code>。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143646241-1354675868.png"></p>
+<br>
+
+<ol start="7">
+<li><strong>constructor</strong> ：</li>
+</ol>
+<p>（1）每个实例都有一个 constructor（构造函数）属性，该属性指向对象本身。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143656225-984188307.png"></p>
+<p>（2）prototype.constructor 是 prototype 上的一个保留属性，这个属性就指向类函数本身，用于指示当前类的构造函数。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143703547-376698011.png"></p>
+<p>（3）既然 prototype.constructor 是指向构造函数的一个指针，那我们是不是可以通过它来修改构造函数呢？我们来试试就知道了。我们先修改下这个函数，然后新建一个实例看看效果</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Puppy.prototype.constructor = <span class="function"><span class="keyword">function</span> <span class="title">myConstructor</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge2 = age + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy2 = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myPuppy2.puppyAge);    <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>上例说明，我们修改 <code>prototype.constructor</code> 只是修改了这个指针而已，并没有修改真正的构造函数。</p>
+<p>（4）上面我们其实已经说清楚了 <code>prototype</code>，<code>__proto__</code>，<code>constructor</code> 几者之间的关系，下面画一张图来更直观的看下</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143713505-1807018330.png" alt="关系图"></p>
+<br>
+
+<ol start="8">
+<li><strong>静态方法</strong> ：我们知道很多面向对象有静态方法这个概念，比如 java 直接是加一个 static 关键字就能将一个方法定义为静态方法。js  中定义一个静态方法更简单，直接将它作为类函数的属性就行。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在构造函数上定义静态方法 statciFunc</span></span><br><span class="line">Puppy.statciFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;我是静态方法，this拿不到实例对象&#x27;</span>)</span><br><span class="line">&#125;      </span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接通过类名调用</span></span><br><span class="line">Puppy.statciFunc(); </span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="9">
+<li><strong>继承</strong>：面向对象怎么能没有继承呢，根据前面所讲的知识，我们其实已经能够自己写一个继承了。所谓继承不就是子类能够继承父类的属性和方法吗？换句话说就是子类能够找到父类的 <code>prototype</code> ，最简单的方法就是子类原型的 <code>__proto__</code> 指向父类原型就行了。</li>
+</ol>
+<p>（1）以下继承方法只是让 Child 访问到了 Parent 原型链，但是没有执行 Parent 的构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = Parent.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> Child );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> Parent );   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）为了解决上述问题，我们不能单纯的修改 <code>Child.prototype.__proto__</code> 指向，还需要用 new 执行下 Parent 的构造函数。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.parentAge = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = <span class="keyword">new</span> Parent();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj.parentAge);    <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+<p>（3）上述方法会多一个 <code>__proto__</code> 层级，可以换成修改 <code>Child.prototype</code> 的指向来解决，注意将 <code>Child.prototype.constructor</code> 重置回来。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.parentAge = <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent();</span><br><span class="line"><span class="comment">// 注意重置constructor</span></span><br><span class="line">Child.prototype.constructor = Child;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(obj.parentAge);   <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+<br>
+
+<ol start="10">
+<li><strong>自己实现一个new</strong>：结合上面讲的，我们知道 new 其实就是生成了一个对象，这个对象能够访问类的原型，知道了原理，我们就可以自己实现一个 new 了。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params">func, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 新建一个空对象</span></span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;;     </span><br><span class="line">  <span class="comment">// 执行构造函数</span></span><br><span class="line">  func.call(obj, ...args);  </span><br><span class="line">  <span class="comment">// 设置原型链</span></span><br><span class="line">  obj.__proto__ = func.prototype;    </span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Puppy</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Puppy.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy3 = myNew(Puppy, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy3.puppyAge);  <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy3.say());     <span class="comment">// 汪汪汪</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="11">
+<li><strong>自己实现一个 instanceof</strong>：知道了原理，其实我们也知道了 instanceof 是干啥的。instanceof 不就是检查一个对象是不是某个类的实例吗？换句话说就是检查一个对象的的原型链上有没有这个类的 prototype ，知道了这个我们就可以自己实现一个了</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceof</span>(<span class="params">targetObj, targetClass</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 参数检查</span></span><br><span class="line">  <span class="keyword">if</span>(!targetObj || !targetClass || !targetObj.__proto__ || !targetClass.prototype)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> current = targetObj;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(current) &#123;   <span class="comment">// 一直往原型链上面找</span></span><br><span class="line">    <span class="keyword">if</span>(current.__proto__ === targetClass.prototype) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;    <span class="comment">// 找到了返回true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    current = current.__proto__;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;     <span class="comment">// 没找到返回false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用我们前面的继承实验下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Child.prototype.__proto__ = Parent.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> Child();</span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(obj, Child) );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(obj, Parent) );   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(myInstanceof(&#123;&#125;, Parent) );   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="三、ES6的-class"><a href="#三、ES6的-class" class="headerlink" title="三、ES6的 class"></a>三、ES6的 class</h2><p>ES6 的 class 就是前面说的函数类的语法糖，比如我们的 Puppy 用 ES6 的 class 写就是这样</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Puppy</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 构造函数</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">age</span>)</span> &#123;            </span><br><span class="line">    <span class="built_in">this</span>.puppyAge = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 实例方法</span></span><br><span class="line">  <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 静态方法</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">statciFunc</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;我是静态方法，this拿不到实例对象&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myPuppy = <span class="keyword">new</span> Puppy(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(myPuppy.puppyAge);    <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log(myPuppy.say());       <span class="comment">// 汪汪汪</span></span><br><span class="line"><span class="built_in">console</span>.log(Puppy.statciFunc());  <span class="comment">// 我是静态方法，this拿不到实例对象</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用class可以让我们的代码看起来更像标准的面向对象，构造函数，实例方法，静态方法都有明确的标识。但是他本质只是改变了一种写法，所以可以看做是一种语法糖，如果你去看babel编译后的代码，你会发现他其实也是把class编译成了我们前面的函数类，extends关键字也是使用我们前面的原型继承的方式实现的。</p>
+</blockquote>
+<br>
+
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><ol>
+<li><p>JS中的函数可以作为函数使用，也可以作为类使用</p>
+</li>
+<li><p>作为类使用的函数实例化时需要使用new</p>
+</li>
+<li><p>为了让函数具有类的功能，函数都具有<code>prototype</code>属性。</p>
+</li>
+<li><p>为了让实例化出来的对象能够访问到prototype上的属性和方法，实例对象的 <code>__proto__</code> 指向了类的 <code>prototype</code>。所以<code>prototype</code>是函数的属性，不是对象的。对象拥有的是<code>__proto__</code>，是用来查找<code>prototype</code>的。</p>
+</li>
+<li><p><code>prototype.constructor</code>指向的是构造函数，也就是类函数本身。改变这个指针并不能改变构造函数。</p>
+</li>
+<li><p>对象本身并没有<code>constructor</code>属性，你访问到的是原型链上的<code>prototype.constructor</code>。</p>
+</li>
+<li><p>函数本身也是对象，也具有<code>__proto__</code>，他指向的是JS内置对象Function的原型 Function.prototype 。所以你才能调用func.call, func.apply这些方法，你调用的其实是 Function.prototype.call 和 Function.prototype.apply 。</p>
+</li>
+<li><p><code>prototype</code>本身也是对象，所以他也有<code>__proto__</code>，指向了他父级的prototype。<code>__proto__</code>和<code>prototype</code>的这种链式指向构成了JS的原型链。原型链的最终指向是Object的原型。Object上面原型链是null，即 <code>Object.prototype.__proto__ === null</code>。</p>
+</li>
+<li><p>另外评论区有朋友提到：<code>Function.__proto__ === Function.prototype </code>。这是因为JS中所有函数的原型都是 Function.prototype ，也就是说所有函数都是 Function 的实例。Function 本身也是可以作为函数使用的—- Function()，所以他也是 Function 的一个实例。类似的还有Object，Array等，他们也可以作为函数使用: Object(), Array() 。所以他们本身的原型也是Function.prototype，即 <code>Object.__proto__ === null Function.prototype</code> 。换句话说，这些可以 new 的内置对象其实都是一个类，就像我们的 Puppy 类一样。</p>
+</li>
+<li><p>ES6 的 class 其实是函数类的一种语法糖，书写起来更清晰，但原理是一样的。</p>
+</li>
+</ol>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201013143726912-1477686856.png" alt="关系图"></p>
+<p><br><br><br></p>
+<blockquote>
+<p><a href="https://www.toutiao.com/i6797216661217739275/?tt_from=mobile_qq&utm_campaign=client_share&timestamp=1585615280&app=news_article&utm_source=mobile_qq&utm_medium=toutiao_android&req_id=20200331084119010131074200316BEA8F&group_id=6797216661217739275">轻松理解JS中的面向对象，顺便搞懂prototype和<strong>proto</strong></a>、<br>[JS 系列二：深入 constructor、prototype、__proto__、[[Prototype]] 及 原型链](<a class="link"   href="https://juejin.im/post/6844903924290289671#heading-11" >https://juejin.im/post/6844903924290289671#heading-11<i class="fas fa-external-link-alt"></i></a>)</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>原型链</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WebSocket理解与使用</title>
+    <url>/2020/12/12/WebSocket%E7%90%86%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="一、WebSocket-理解"><a href="#一、WebSocket-理解" class="headerlink" title="一、WebSocket 理解"></a>一、WebSocket 理解</h3><ol>
+<li><p><strong>概念：</strong> WebSocket 是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
+</li>
+<li><p><strong>特点：</strong> WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
+</li>
+<li><p><strong>流程：</strong> 在 WebSocket API 中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
+</li>
+</ol>
+<ol start="4">
+<li><p><strong>目前：</strong> 现在，很多网站为了实现推送技术，所用的技术都是 Ajax 轮询。轮询是在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP请求，然后由服务器返回最新的数据给客户端的浏览器。这种传统的模式带来很明显的缺点，即浏览器需要不断的向服务器发出请求，然而HTTP请求可能包含较长的头部，其中真正有效的数据可能只是很小的一部分，显然这样会浪费很多的带宽等资源。</p>
+</li>
+<li><p><strong>优势：</strong> HTML5 定义的 WebSocket 协议，能更好的节省服务器资源和带宽，并且能够更实时地进行通讯。</p>
+</li>
+</ol>
+<br>
+
+<h3 id="二、WebSocket-属性"><a href="#二、WebSocket-属性" class="headerlink" title="二、WebSocket 属性"></a>二、WebSocket 属性</h3><ol>
+<li><strong>WebSocket 对象</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">&#x27;ws://localhost:3000&#x27;</span>)  <span class="comment">// 创建 WebSocket 对象</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="2">
+<li><strong>WebSocket 对象属性：</strong> </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ws.readyState</td>
+<td>只读属性 readyState 表示连接状态，可以是以下值: <br>   0 - 表示连接尚未建立。 <br> 1 - 表示连接已建立，可以进行通信。<br>2 - 表示连接正在进行关闭。<br> 3 - 表示连接已经关闭或者连接不能打开。</td>
+</tr>
+</tbody></table>
+<br>
+
+<ol start="3">
+<li><strong>WebSocket 对象事件：</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>事件处理程序</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>open</td>
+<td>ws.onopen</td>
+<td>连接建立时触发</td>
+</tr>
+<tr>
+<td>message</td>
+<td>ws.onmessage</td>
+<td>客户端接收服务端数据时触发</td>
+</tr>
+<tr>
+<td>error</td>
+<td>ws.onerror</td>
+<td>通信发生错误时触发</td>
+</tr>
+<tr>
+<td>close</td>
+<td>ws.onclose</td>
+<td>连接关闭时触发</td>
+</tr>
+</tbody></table>
+<br>
+
+<ol start="4">
+<li><strong>WebSocket 对象方法：</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ws.send()</td>
+<td>使用连接发送数据</td>
+</tr>
+<tr>
+<td>ws.close()</td>
+<td>关闭连接</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="三、WebSocket-使用"><a href="#三、WebSocket-使用" class="headerlink" title="三、WebSocket 使用"></a>三、WebSocket 使用</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 创建 WebSocket 对象</span></span><br><span class="line"><span class="keyword">let</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">&#x27;ws://localhost:3000&#x27;</span>)</span><br><span class="line"><span class="comment">// 定时器</span></span><br><span class="line"><span class="keyword">let</span> timer;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听打开</span></span><br><span class="line">ws.onopen = webSocketOpen;</span><br><span class="line"><span class="comment">// 监听异常</span></span><br><span class="line">ws.onerror = webSocketError;</span><br><span class="line"><span class="comment">// 监听消息</span></span><br><span class="line">ws.onmessage = webSocketMessage;</span><br><span class="line"><span class="comment">// 监听关闭</span></span><br><span class="line">ws.onclose = webSocketClose;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">webSocketOpen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`连接成功`</span>)</span><br><span class="line">    start()</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">webSocketError</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`连接异常，请刷新页面重试`</span>)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">webSocketMessage</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`接收到消息:<span class="subst">$&#123;e.data&#125;</span>`</span>)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">webSocketClose</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`连接关闭`</span>)</span><br><span class="line">    <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送心跳, 因为长时间不发送消息，就会断</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">  timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">    ws.send(<span class="string">`发送心跳给后端<span class="subst">$&#123;date&#125;</span>`</span>)</span><br><span class="line">  &#125;, <span class="number">2</span> * <span class="number">60</span> * <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+<h3 id="四、WebSocket-应用"><a href="#四、WebSocket-应用" class="headerlink" title="四、WebSocket 应用"></a>四、WebSocket 应用</h3><ol>
+<li><p>双向通信，如聊天室。</p>
+</li>
+<li><p>微信小程序对 WebSocket 进行了封装，wx.connectSocket() 可以理解为创建了一个 WebSocket 实例 SocketTask。</p>
+</li>
+<li><p><code>socket.io</code> 支持 WebSocket、轮询、HTTP 流等方式。</p>
+</li>
+</ol>
+<p><br><br><br><br><br></p>
+]]></content>
+      <categories>
+        <category>Websocket</category>
+      </categories>
+      <tags>
+        <tag>websocket</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pdf转图片并下载</title>
+    <url>/2020/12/12/pdf%E8%BD%AC%E5%9B%BE%E7%89%87%E5%B9%B6%E4%B8%8B%E8%BD%BD/</url>
+    <content><![CDATA[<h3 id="一、实现效果"><a href="#一、实现效果" class="headerlink" title="一、实现效果"></a>一、实现效果</h3><p>选择本地 pdf 文件上传，会生成 pdf 文件的预览，点击保存功能。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165147927-1392643265.png" alt="预览图1"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165256769-1608228895.png" alt="预览图2"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202010/1855591-20201022165306613-1977214439.png" alt="预览图3"></p>
+<br>
+
+<h3 id="二、所用插件"><a href="#二、所用插件" class="headerlink" title="二、所用插件"></a>二、所用插件</h3><ol>
+<li>pdf文件相关的文件处理插件：<code>pdfjs-dist@2.3.200</code></li>
+<li>zip压缩文件相关的包： <code>jszip@3.5.0</code></li>
+<li>文件保存下载相关的包：<code>file-saver@2.0.2</code></li>
+</ol>
+<br>
+
+<h3 id="三、相关代码"><a href="#三、相关代码" class="headerlink" title="三、相关代码"></a>三、相关代码</h3><blockquote>
+<p>vue 中测试</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--</span><br><span class="line"> * @<span class="built_in">Date</span>: <span class="number">2020</span>-<span class="number">10</span>-<span class="number">21</span> <span class="number">10</span>:<span class="number">44</span>:<span class="number">54</span></span><br><span class="line"> * @information: pdf 转图片并下载</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;page09&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;info-box&quot;</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">        &lt;input id=<span class="string">&quot;input&quot;</span> type=<span class="string">&quot;file&quot;</span> accept=<span class="string">&quot;application/pdf&quot;</span> @change=<span class="string">&quot;convertFile()&quot;</span>/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;cell&quot;</span>&gt;</span><br><span class="line">        &lt;div&gt;名称：&#123;&#123;fileName || <span class="string">&#x27;-&#x27;</span>&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;大小：&#123;&#123;<span class="built_in">Number</span>(fileSize).toFixed(<span class="number">2</span>)&#125;&#125;M&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;页数：&#123;&#123;filePage&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;button @click=<span class="string">&quot;onExportImg&quot;</span>&gt;保存图片&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=<span class="string">&quot;container&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> PDFJS <span class="keyword">from</span> <span class="string">&#x27;pdfjs-dist&#x27;</span></span><br><span class="line"><span class="keyword">import</span> JSZIP <span class="keyword">from</span> <span class="string">&#x27;jszip&#x27;</span></span><br><span class="line"><span class="keyword">import</span> FileSaver <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="comment">// pdf地址</span></span><br><span class="line">      pdfPath2: <span class="string">`https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf`</span>,</span><br><span class="line">      <span class="comment">// arrayBuffer</span></span><br><span class="line">      arrayBuffer: <span class="literal">null</span>, </span><br><span class="line">      <span class="comment">// 文件名称</span></span><br><span class="line">      fileName: <span class="literal">null</span>,</span><br><span class="line">      <span class="comment">// 文件大小</span></span><br><span class="line">      fileSize: <span class="number">0</span>,</span><br><span class="line">      <span class="comment">// 文件页数</span></span><br><span class="line">      filePage: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 读取文件内容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">convertFile</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> file = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>).files</span><br><span class="line">      <span class="keyword">if</span>(!file.length) <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">let</span> &#123;name, size&#125; = file[<span class="number">0</span>]</span><br><span class="line">      <span class="built_in">Object</span>.assign(<span class="built_in">this</span>, &#123;<span class="attr">fileName</span>: name, <span class="attr">fileSize</span>: size/<span class="number">1024</span>/<span class="number">1024</span>&#125;)</span><br><span class="line">      <span class="comment">// 使用FileReader对象，web应用程序可以异步的读取存储在用户计算机上的文件(或者原始数据缓冲)内容，可以使用File对象或者Blob对象来指定所要处理的文件或数据</span></span><br><span class="line">      <span class="keyword">let</span> fileReader = <span class="keyword">new</span> FileReader()</span><br><span class="line">      <span class="comment">// 异步按字节读取文件内容，结果用ArrayBuffer对象表示</span></span><br><span class="line">      fileReader.readAsArrayBuffer(file[<span class="number">0</span>])</span><br><span class="line">      fileReader.onload = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> arrayBuffer = <span class="built_in">this</span>.arrayBuffer = e.target.result</span><br><span class="line">        <span class="comment">// 创建canvas节点</span></span><br><span class="line">        <span class="built_in">this</span>.createCanvas(arrayBuffer)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建canvas</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">createCanvas</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 清空节点下数据</span></span><br><span class="line">      <span class="built_in">document</span>.getElementById(<span class="string">&#x27;container&#x27;</span>).innerHTML = <span class="string">&#x27;&#x27;</span></span><br><span class="line">      <span class="comment">// 使用getTextContent获取pdf内容</span></span><br><span class="line">      PDFJS.getDocument(val).promise.then(<span class="function"><span class="params">el</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> filePage = <span class="built_in">this</span>.filePage = el.numPages</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= filePage; i ++) &#123;</span><br><span class="line">          <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">          canvas.id = <span class="string">`pageNum-<span class="subst">$&#123;i&#125;</span>`</span></span><br><span class="line">          <span class="keyword">let</span> context = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">          <span class="built_in">document</span>.getElementById(<span class="string">&#x27;container&#x27;</span>).append(canvas)</span><br><span class="line">          <span class="comment">// 渲染canvas</span></span><br><span class="line">          <span class="built_in">this</span>.openPage(el, i, context)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 渲染canvas</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">openPage</span>(<span class="params">pdfFile, pageNumber, context</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 获取PDF文档中的各个页面</span></span><br><span class="line">      pdfFile.getPage(pageNumber).then(<span class="function"><span class="params">page</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 设置展示比例</span></span><br><span class="line">        <span class="keyword">let</span> scale = <span class="number">3</span></span><br><span class="line">        <span class="comment">// 获取pdf尺寸</span></span><br><span class="line">        <span class="keyword">let</span> viewport = page.getViewport(scale)</span><br><span class="line">        <span class="keyword">let</span> canvas = context.canvas</span><br><span class="line">        canvas.width = viewport.width</span><br><span class="line">        canvas.height = viewport.height</span><br><span class="line">        canvas.style.width = <span class="string">&quot;100%&quot;</span></span><br><span class="line">        canvas.style.height = <span class="string">&quot;100%&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> model = &#123;</span><br><span class="line">          canvasContext: context,</span><br><span class="line">          viewport: viewport,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 渲染PDF</span></span><br><span class="line">        page.render(model)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 保存图片</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">onExportImg</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(!<span class="built_in">this</span>.arrayBuffer) &#123;</span><br><span class="line">        alert(<span class="string">`请上传pdf文件`</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> jszip = <span class="keyword">new</span> JSZIP()</span><br><span class="line">      <span class="comment">// 解压缩后的文件夹名称</span></span><br><span class="line">      <span class="keyword">let</span> images = jszip.folder(<span class="string">&quot;images&quot;</span>)</span><br><span class="line">      <span class="keyword">let</span> eleList = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">      <span class="comment">// 遍历所有canvas节点</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; eleList.length; i ++) &#123;</span><br><span class="line">        <span class="keyword">let</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">`pageNum-<span class="subst">$&#123;i+<span class="number">1</span>&#125;</span>`</span>)</span><br><span class="line">        <span class="comment">// 向此文件夹中加入文件</span></span><br><span class="line">        <span class="comment">// toDataURL() 方法返回一个包含图片展示的 data URI 。可以使用 type 参数其类型，默认为 PNG 格式。图片的分辨率为96dpi</span></span><br><span class="line">        images.file(<span class="string">`image-<span class="subst">$&#123;i+<span class="number">1</span>&#125;</span>.png`</span>, <span class="built_in">this</span>.dataURLtoBlob(canvas.toDataURL(<span class="string">&quot;image/png&quot;</span>, <span class="number">1.0</span>)), &#123;</span><br><span class="line">          base64: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 生成一个zip文件</span></span><br><span class="line">      jszip.generateAsync(&#123;</span><br><span class="line">        type: <span class="string">&quot;blob&quot;</span></span><br><span class="line">      &#125;).then(<span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 FileSaver 保存下载 zip 文件</span></span><br><span class="line">        FileSaver.saveAs(content, <span class="string">&quot;pdfToImages.zip&quot;</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * dataURL 转成 Blob</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="title">dataURLtoBlob</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> arr = val.split(<span class="string">&#x27;,&#x27;</span>),</span><br><span class="line">          mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span><br><span class="line">          bstr = atob(arr[<span class="number">1</span>]),</span><br><span class="line">          n = bstr.length,</span><br><span class="line">          u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">      <span class="keyword">while</span>(n --) &#123;</span><br><span class="line">        <span class="comment">// charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数</span></span><br><span class="line">        u8arr[n] = bstr.charCodeAt(n)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// new Blob(blobParts, [options]) 参数说明:</span></span><br><span class="line">      <span class="comment">// 1. blobParts：数组类型，数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是ArrayBuffer, ArrayBufferView, Blob, DOMString </span></span><br><span class="line">      <span class="comment">// 2. options：可选项，字典格式类型，可以指定如下两个属性：</span></span><br><span class="line">      <span class="comment">//    (1) type，默认值为 &quot;&quot;，它代表了将会被放入到blob中的数组内容的MIME类型。</span></span><br><span class="line">      <span class="comment">//    (2) endings，默认值为&quot;transparent&quot;，用于指定包含行结束符\n的字符串如何被写入。 它是以下两个值中的一个： &quot;native&quot;，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； &quot;transparent&quot;，表示会保持blob中保存的结束符不变</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123; <span class="attr">type</span>: mime &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=<span class="string">&quot;scss&quot;</span>&gt;</span><br><span class="line">#page09 &#123;</span><br><span class="line">  width: 1000px;</span><br><span class="line">  margin: <span class="number">0</span> auto;</span><br><span class="line"></span><br><span class="line">  .info-box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line"></span><br><span class="line">    .input &#123;</span><br><span class="line">      margin: 15px <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">      #input &#123;</span><br><span class="line">        width: <span class="number">100</span>%;</span><br><span class="line">        height: <span class="number">100</span>%;</span><br><span class="line">        cursor: pointer;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .cell &#123;</span><br><span class="line">      margin: 15px <span class="number">0</span>;</span><br><span class="line">      display: flex;  </span><br><span class="line">      justify-content: space-around;</span><br><span class="line"></span><br><span class="line">      div &#123;</span><br><span class="line">        margin-right: 20px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  #container &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    min-height: 850px;</span><br><span class="line">    margin:  <span class="number">0</span> auto;</span><br><span class="line">    border: 1px solid #eee;</span><br><span class="line">    border-radius: 10px;</span><br><span class="line"></span><br><span class="line">    canvas &#123;</span><br><span class="line">      margin-bottom: 10px;</span><br><span class="line">      border: 1px solid #ff6700;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="四、相关知识点"><a href="#四、相关知识点" class="headerlink" title="四、相关知识点"></a>四、相关知识点</h3><h4 id="1-使用-FileReader-进行文件读取"><a href="#1-使用-FileReader-进行文件读取" class="headerlink" title="1. 使用 FileReader 进行文件读取"></a>1. 使用 FileReader 进行文件读取</h4><blockquote>
+<p><a class="link"   href="https://www.cnblogs.com/hhhyaaon/p/5929492.html" >[HTML5] FileReader对象<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1）创建实例</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fileReader = <span class="keyword">new</span> FileReader()</span><br></pre></td></tr></table></figure>
+
+
+<p>（2）方法</p>
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abort():void</td>
+<td>终止文件读取操作</td>
+</tr>
+<tr>
+<td>readAsArrayBuffer(file):void</td>
+<td>异步按字节读取文件内容，结果用ArrayBuffer对象表示</td>
+</tr>
+<tr>
+<td>readAsBinaryString(file):void</td>
+<td>异步按字节读取文件内容，结果为文件的二进制串</td>
+</tr>
+<tr>
+<td>readAsDataURL(file):void</td>
+<td>异步读取文件内容，结果用data:url的字符串形式表示</td>
+</tr>
+<tr>
+<td>readAsText(file,encoding):void</td>
+<td>异步按字符读取文件内容，结果用字符串形式表示</td>
+</tr>
+</tbody></table>
+<p>（3）事件： FileReader 通过异步的方式读取文件内容，结果均是通过事件回调获取。</p>
+<table>
+<thead>
+<tr>
+<th>方法定义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onabort</td>
+<td>当读取操作被中止时调用</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>当读取操作发生错误时调用</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>当读取操作成功完成时调用</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>当读取操作完成时调用,不管是成功还是失败</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>当读取操作将要开始之前调用</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>在读取数据过程中周期性调用</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="2-使用-canvas-的-toDataURL-方法返回-包含-data-URI-的DOMString"><a href="#2-使用-canvas-的-toDataURL-方法返回-包含-data-URI-的DOMString" class="headerlink" title="2. 使用 canvas 的 toDataURL() 方法返回 包含 data URI 的DOMString"></a>2. 使用 canvas 的 <code>toDataURL()</code> 方法返回 包含 data URI 的DOMString</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">`canvas`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数说明：</span></span><br><span class="line"><span class="comment">// 1. type（可选）：图片格式，默认为 image/png</span></span><br><span class="line"><span class="comment">// 2. encoderOptions（可选）：在指定图片格式为 image/jpeg 或 image/webp的情况下，可以从 0 到 1 的区间内选择图片的质量。如果超出取值范围，将会使用默认值 0.92。其他参数会被忽略。</span></span><br><span class="line"><span class="keyword">let</span> result = canvas.toDataURL(<span class="string">&quot;image/png&quot;</span>, <span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL" >MDN: HTMLCanvasElement.toDataURL()<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<br>
+
+
+<h4 id="3-ArrayBuffer-二进制数组"><a href="#3-ArrayBuffer-二进制数组" class="headerlink" title="3. ArrayBuffer 二进制数组"></a>3. ArrayBuffer 二进制数组</h4><blockquote>
+<p><a class="link"   href="https://zh.javascript.info/arraybuffer-binary-arrays" >ArrayBuffer，二进制数组<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1） JS 中的二进制数据格式，例：ArrayBuffer，Uint8Array，DataView，Blob，File 及其他。</p>
+<p><strong>基本的二进制对象是 ArrayBuffer —— 对固定长度的连续内存空间的引用。</strong></p>
+<p>（2）如要操作 ArrayBuffer，我们需要使用“视图”对象。 视图对象本身并不存储任何东西。它是一副“眼镜”，透过它来解释存储在 ArrayBuffer 中的字节。例如下：</p>
+<table>
+<thead>
+<tr>
+<th>视图类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Uint8Array</td>
+<td>将 ArrayBuffer 中的每个字节视为 0 到 255 之间的单个数字（每个字节是 8 位，因此只能容纳那么多）。这称为 “8 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td>将每 2 个字节视为一个 0 到 65535 之间的整数。这称为 “16 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td>将每 4 个字节视为一个 0 到 4294967295 之间的整数。这称为 “32 位无符号整数”。</td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td>将每 8 个字节视为一个 5.0x10-324 到 1.8x10308 之间的浮点数。</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="3-Blob"><a href="#3-Blob" class="headerlink" title="3. Blob"></a>3. Blob</h4><blockquote>
+<p><a class="link"   href="https://segmentfault.com/a/1190000011563430" >细说Web API中的Blob<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>（1）概述： Blob 对象表示一个不可变、原始数据的类文件对象。它的数据可以按文本或二进制的格式进行读取，也可以转换成 ReadableStream 来用于数据操作。Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。</p>
+<p>（2）创建 Blob 对象</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数说明</span></span><br><span class="line"><span class="comment">// 1. blobParts： 数组类型，数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是ArrayBuffer, ArrayBufferView, Blob, DOMString</span></span><br><span class="line"><span class="comment">// 2. options：可选项，字典格式类型，可以指定如下两个属性：</span></span><br><span class="line"></span><br><span class="line">type，默认值为 <span class="string">&quot;&quot;</span>，它代表了将会被放入到blob中的数组内容的MIME类型。</span><br><span class="line">endings，默认值为<span class="string">&quot;transparent&quot;</span>，用于指定包含行结束符\n的字符串如何被写入。 它是以下两个值中的一个： <span class="string">&quot;native&quot;</span>，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； <span class="string">&quot;transparent&quot;</span>，表示会保持blob中保存的结束符不变。</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blob = <span class="keyword">new</span> Blob(blobParts[, options])</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> data1 = <span class="string">&quot;a&quot;</span></span><br><span class="line"><span class="keyword">let</span> data2 = &#123; <span class="string">&quot;name&quot;</span>: <span class="string">&quot;abc&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> blob1 = <span class="keyword">new</span> Blob([data1])</span><br><span class="line"><span class="keyword">let</span> blob2 = <span class="keyword">new</span> Blob([<span class="built_in">JSON</span>.stringify(data4)])</span><br><span class="line"><span class="keyword">let</span> blob3 = <span class="keyword">new</span> Blob([data4])</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(blob1);  <span class="comment">// Blob &#123;size: 1, type: &quot;&quot;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(blob2);  <span class="comment">// Blob &#123;size: 14, type: &quot;&quot;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(blob3);  <span class="comment">// Blob &#123;size: 15, type: &quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>size代表Blob 对象中所包含数据的字节数。这里要注意，使用字符串和普通对象创建Blob时的不同，blob4使用通过JSON.stringify把data4对象转换成json字符串，blob5则直接使用data4创建，两个对象的size分别为14和15。blob4的size等于14很容易理解，因为JSON.stringify(data4)的结果为：”{“name”:”abc”}”，正好14个字节(不包含最外层的引号)。blob5的size等于15是如何计算而来的呢？实际上，当使用普通对象创建Blob对象时，相当于调用了普通对象的toString()方法得到字符串数据，然后再创建Blob对象。所以，blob5保存的数据是”[object Object]”，是15个字节(不包含最外层的引号)。</p>
+</blockquote>
+<p>（3）Blob 方法： slice()</p>
+<p>（4）Blob使用场景</p>
+<ul>
+<li>分片上传</li>
+<li>Blob URL</li>
+</ul>
+<br>
+
+<blockquote>
+<p><a class="link"   href="https://xxlllq.github.io/readme/2018/05/09/pdf2img.html" >PDF转成图片<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p><br><br></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>pdf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>File、Blob、dataURL和canvas的应用与转换</title>
+    <url>/2020/12/12/File%E3%80%81Blob%E3%80%81dataURL%E5%92%8Ccanvas%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<h2 id="一、-概念介绍"><a href="#一、-概念介绍" class="headerlink" title="一、 概念介绍"></a>一、 概念介绍</h2><h3 id="1-File"><a href="#1-File" class="headerlink" title="1. File"></a>1. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/File" >File<i class="fas fa-external-link-alt"></i></a></h3><p>(1) 通常情况下， File 对象是来自用户在一个 <code>&lt;input&gt;</code> 元素上选择文件后返回的 FileList 对象,也可以是来自由拖放操作生成的 DataTransfer 对象，或者来自 HTMLCanvasElement 上的 mozGetAsFile() API。</p>
+<p>(2) File 对象是特殊类型的 Blob，且可以用在任意的 Blob 类型的 context 中。比如：FileReader, URL.createObjectURL(), createImageBitmap(), 及 XMLHttpRequest.send() 都能处理 Blob 和 File。</p>
+<br>
+
+
+<h3 id="2-Blob"><a href="#2-Blob" class="headerlink" title="2. Blob"></a>2. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" >Blob<i class="fas fa-external-link-alt"></i></a></h3><p>(1) Blob 对象表示一个不可变、原始数据的类文件对象。它的数据可以按文本或二进制的格式进行读取，也可以转换成 ReadableStream 来用于数据操作。</p>
+<p>(2) Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。</p>
+<br>
+
+<h3 id="3-dataURL"><a href="#3-dataURL" class="headerlink" title="3. dataURL"></a>3. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/data_URIs" >dataURL<i class="fas fa-external-link-alt"></i></a></h3><p>(1) Data URLs，即前缀为 data: 协议的URL，其允许内容创建者向文档中嵌入小文件。</p>
+<p>(2) Data URLs 由四个部分组成：前缀(data:)、指示数据类型的MIME类型、如果非文本则为可选的base64标记、数据本身：data:[<mediatype>][;base64],<data></p>
+<br>
+
+<h3 id="4-canvas"><a href="#4-canvas" class="headerlink" title="4. canvas"></a>4. <a class="link"   href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" >canvas<i class="fas fa-external-link-alt"></i></a></h3><p>(1) Canvas API 提供了一个通过JavaScript 和 HTML的 <canvas> 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。</p>
+<br>
+
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201202084724368-40559622.jpg" alt="关系图"></p>
+<h2 id="二、相互转化"><a href="#二、相互转化" class="headerlink" title="二、相互转化"></a>二、相互转化</h2><h3 id="1-File、Blob-转化成-dataURL"><a href="#1-File、Blob-转化成-dataURL" class="headerlink" title="1. File、Blob 转化成 dataURL"></a>1. File、Blob 转化成 dataURL</h3><blockquote>
+<p>FileReader 对象允许 Web 应用程序异步读取文件(或原始数据缓冲区)内容，使用 File 或 Blob 对象指定要读取的文件或数据。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileToDataURL</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">    reader.readAsDataURL(file)</span><br><span class="line">    <span class="comment">// reader 读取文件成功的回调</span></span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> reader.result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="2-dataURL-base64-转化成-Blob-二进制-对象"><a href="#2-dataURL-base64-转化成-Blob-二进制-对象" class="headerlink" title="2. dataURL(base64) 转化成 Blob(二进制)对象"></a>2. dataURL(base64) 转化成 Blob(二进制)对象</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURLToBlob</span>(<span class="params">fileDataURL</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = fileDataURL.split(<span class="string">&#x27;,&#x27;</span>),</span><br><span class="line">        mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span><br><span class="line">        bstr = atob(arr[<span class="number">1</span>]),</span><br><span class="line">        n = bstr.length,</span><br><span class="line">        u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">    <span class="keyword">while</span>(n --) &#123;</span><br><span class="line">      u8arr[n] = bstr.charCodeAt(n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123;<span class="attr">type</span>: mime&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="3-File-Blob-文件数据绘制到-canvas"><a href="#3-File-Blob-文件数据绘制到-canvas" class="headerlink" title="3. File, Blob 文件数据绘制到 canvas"></a>3. File, Blob 文件数据绘制到 canvas</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 思路：File, Blob ——&gt; dataURL ——&gt; canvas</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileAndBlobToCanvas</span>(<span class="params">fileDataURL</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">    img.src = fileDataURL</span><br><span class="line">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span>(!canvas.getContext) &#123;</span><br><span class="line">      alert(<span class="string">&#x27;浏览器不支持canvas&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> ctx = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;container&#x27;</span>).appendChild(canvas)</span><br><span class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="4-从-canvas-中获取文件-dataURL"><a href="#4-从-canvas-中获取文件-dataURL" class="headerlink" title="4. 从 canvas 中获取文件 dataURL"></a>4. 从 canvas 中获取文件 dataURL</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">canvasToDataURL</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> canvasDataURL = canvas.toDataURL(<span class="string">&#x27;image/png&#x27;</span>, <span class="number">1.0</span>)</span><br><span class="line">    <span class="keyword">return</span> canvasDataURL</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="三、完整栗子"><a href="#三、完整栗子" class="headerlink" title="三、完整栗子"></a>三、完整栗子</h2><blockquote>
+<p>可以点击 <a class="link"   href="http://8.131.67.8:8088/file.html" >这里<i class="fas fa-external-link-alt"></i></a> 在线预览</p>
+</blockquote>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202011/1855591-20201125144437125-1637282205.png" alt="预览图"></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line"> * @<span class="built_in">Date</span>: <span class="number">2020</span>-<span class="number">11</span>-<span class="number">22</span> <span class="number">14</span>:<span class="number">33</span>:<span class="number">55</span></span><br><span class="line"> * @information: datadURL File Blob canvas 的互相转化</span><br><span class="line"> * </span><br><span class="line"> * File.prototype <span class="keyword">instanceof</span> Blob === <span class="literal">true</span></span><br><span class="line"> * Blob.prototype <span class="keyword">instanceof</span> <span class="built_in">Object</span> === <span class="literal">true</span></span><br><span class="line">--&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">  &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">  &lt;title&gt;datadURL File Blob canvas&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .body &#123;</span><br><span class="line">      text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">    .img-box &#123;</span><br><span class="line">      margin: 20px <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    #img &#123;</span><br><span class="line">      width: <span class="number">60</span>%;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;body&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;input-box&quot;</span>&gt;</span><br><span class="line">      &lt;input id=<span class="string">&quot;input&quot;</span> type=<span class="string">&quot;file&quot;</span> accept=<span class="string">&quot;image/png, image/jpeg&quot;</span> onchange=<span class="string">&quot;onChangeInput()&quot;</span>&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;img-box&quot;</span>&gt;</span><br><span class="line">      img: </span><br><span class="line">      &lt;img src=<span class="string">&quot;&quot;</span> alt=<span class="string">&quot;img&quot;</span> id=<span class="string">&quot;img&quot;</span>&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;canvas-box&quot;</span> id=<span class="string">&quot;canvas-box&quot;</span>&gt;</span><br><span class="line">      canvas: </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 文件对象</span></span><br><span class="line">  <span class="keyword">let</span> file; </span><br><span class="line">  <span class="comment">// 文件 base64 码</span></span><br><span class="line">  <span class="keyword">let</span> fileDataURL;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 10:32:51</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: 获取文件</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onChangeInput</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    file = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>).files[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;file-&gt;&#x27;</span>, file)</span><br><span class="line">    <span class="keyword">if</span>(!FileReader) &#123;</span><br><span class="line">      alert(<span class="string">&#x27;浏览器版本过低，请升级版本&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fileToDataURL()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 10:31:47</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: 使用 FileReader 读取文件内容， File(二进制) ——&gt; dataURL(base64)   Blob ——&gt; dataURL 同理</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fileToDataURL</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader()</span><br><span class="line">    reader.readAsDataURL(file)</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;dataURL-&gt;&#x27;</span>, reader.result)</span><br><span class="line">      fileDataURL = reader.result</span><br><span class="line">      showImg()</span><br><span class="line">      dataURLToBlob()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 10:33:13</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: 图片回显</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">showImg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> img = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">    img.src = fileDataURL</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 10:34:47</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: dataURL(base64) ——&gt; Blob(二进制)对象</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dataURLToBlob</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = fileDataURL.split(<span class="string">&#x27;,&#x27;</span>),</span><br><span class="line">        mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>],</span><br><span class="line">        bstr = atob(arr[<span class="number">1</span>]),</span><br><span class="line">        n = bstr.length,</span><br><span class="line">        u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">    <span class="keyword">while</span>(n --) &#123;</span><br><span class="line">      u8arr[n] = bstr.charCodeAt(n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;blob-&gt;&#x27;</span>, <span class="keyword">new</span> Blob([u8arr], &#123;<span class="attr">type</span>: mime&#125;))</span><br><span class="line">    fileAndBlobToCanvas()</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([u8arr], &#123;<span class="attr">type</span>: mime&#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 10:53:31</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: File, Blob 文件数据绘制到 canvas</span></span><br><span class="line"><span class="comment">   * 思路：File, Blob ——&gt; dataURL ——&gt; canvas</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fileAndBlobToCanvas</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">    img.src = fileDataURL</span><br><span class="line">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span>(!canvas.getContext) &#123;</span><br><span class="line">      alert(<span class="string">&#x27;浏览器不支持canvas&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> ctx = canvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;canvas-box&#x27;</span>).appendChild(canvas)</span><br><span class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height)</span><br><span class="line">      canvasToDataURL()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@Date</span>: 2020-11-25 11:23:54</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@information</span>: 从 canvas 中获取文件 dataURL </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">canvasToDataURL</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> canvasDataURL = canvas.toDataURL(<span class="string">&#x27;image/png&#x27;</span>, <span class="number">1.0</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;从 canvas 中获取文件 dataURL :&#x27;</span>, canvasDataURL)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><br><br><br><br></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>file</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue-cli3.x多页面配置</title>
+    <url>/2020/12/12/vue-cli3-x%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><h3 id="1-单页面（SPA-Single-Page-Application）"><a href="#1-单页面（SPA-Single-Page-Application）" class="headerlink" title="1. 单页面（SPA Single-Page-Application）"></a>1. 单页面（SPA Single-Page-Application）</h3><p>（1）入口：单页面只是一张 Web 页面的模式，只有一个 html 文件，整个项目只有一个入口文件。</p>
+<p>（2）资源加载：单页面应用的资源只在开始初始化进入的的时候加载一次（属于全局加载使用），之后的组件跳转不再重新加载。项目初始化压力较大。</p>
+<p>（3）页面跳转：单页面内的页面跳转其实是 vue 运用了 vue-router 实现了组件切换。</p>
+<p>（4）数据传递：可通过全局变量、参数或 store 进行数据交互。 </p>
+<h3 id="2-多页面（MPA-Multi-Page-Application）"><a href="#2-多页面（MPA-Multi-Page-Application）" class="headerlink" title="2. 多页面（MPA Multi-Page-Application）"></a>2. 多页面（MPA Multi-Page-Application）</h3><p>（1）入口：多页面是多张 web 页面的模式，有多个 html 文件，整个项目有多个入口文件。</p>
+<p>（2）资源加载：多页面之间的资源互不影响，npm 依赖包是全局安装，但是在多页面每个入口文件（main.js）手动按需引入。多页面之间资源互不共享，跳转需要资源重新加载，项目初始化压力较小，但多页面之间跳转资源需重新加载，压力相对较大。</p>
+<p>（3）页面跳转：多页面的单个页面内部是 vue-router 形式的组件切换；多页面之间需通过 a 标签跳转页面。</p>
+<p>（4）数据传递：多页面的单个页面内部和 SPA 一致；多页面之间需通过地址栏传参形式进行数据交互。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201181302818-1993906304.png" alt="对比1"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201185858593-1215493062.png" alt="对比2"></p>
+<br>
+
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><h3 id="1-新建项目-demo"><a href="#1-新建项目-demo" class="headerlink" title="1. 新建项目 demo"></a>1. 新建项目 demo</h3><p>（1）通过 <code>vue-cli 3.x</code> 新建项目（vue create demo），删除项目中自带的 <code>App.vue</code> 和 <code>main.js</code></p>
+<p>（2）安装 <code>path</code> 和 <code>glob</code> 依赖包（npm i path -D 、npm i glob -D）</p>
+<h3 id="2-配置入口文件"><a href="#2-配置入口文件" class="headerlink" title="2. 配置入口文件"></a>2. 配置入口文件</h3><p>（1） 在 <code>src</code> 目录下新建 <code>pages</code> 用于配置多页面模块的文件夹。</p>
+<p>（2）在 <code>pages</code> 文件夹下新建多页面模块，在此举栗 <code>home</code> 和 <code>index</code> 文件夹。</p>
+<p>（3）在多页面的模块下（<code>home</code> 和 <code>index</code>），分别新建 <code>App.vue</code> 和 <code>main.js</code>，按原有的内容填充这两个文件，用于每个页面模块的入口。 </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line"> * @<span class="built_in">Date</span>: <span class="number">2020</span>-<span class="number">12</span>-<span class="number">01</span> <span class="number">13</span>:<span class="number">53</span>:<span class="number">49</span></span><br><span class="line"> * @information: App.vue</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Date: 2020-12-01 13:53:55</span></span><br><span class="line"><span class="comment"> * @information: main.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;../../router/home&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;../../store&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-添加全局启动和打包配置"><a href="#3-添加全局启动和打包配置" class="headerlink" title="3. 添加全局启动和打包配置"></a>3. 添加全局启动和打包配置</h3><p>（1）在项目根目录下新建 <code>vue.config.js</code> 配置文件 </p>
+<p>（2）添加入口声明配置 和 打包配置，具体如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Date: 2020-12-01 11:35:31</span></span><br><span class="line"><span class="comment"> * @information: vue.config.js</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> glob = <span class="built_in">require</span>(<span class="string">&#x27;glob&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> titles = &#123;</span><br><span class="line">  home: <span class="string">&#x27;这是home标题&#x27;</span>,</span><br><span class="line">  index: <span class="string">&#x27;这是index标题&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取pages文件夹下的文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getEntry</span>(<span class="params">globPath</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> entries = &#123;&#125;, tmp;</span><br><span class="line">  <span class="comment">// 读取js文件</span></span><br><span class="line">  glob.sync(globPath+<span class="string">&#x27;js&#x27;</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">entry</span>) </span>&#123;</span><br><span class="line">    tmp = entry.split(<span class="string">&#x27;/&#x27;</span>).splice(-<span class="number">3</span>)</span><br><span class="line">    entries[tmp[<span class="number">1</span>]] = &#123;</span><br><span class="line">      entry,</span><br><span class="line">      template: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      filename: tmp[<span class="number">1</span>] + <span class="string">&#x27;.html&#x27;</span>,</span><br><span class="line">      title: titles[tmp[<span class="number">1</span>]],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> entries</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> htmls = getEntry(<span class="string">&#x27;./src/pages/**/*.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  pages: htmls,</span><br><span class="line">  publicPath: <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line">  outputDir: <span class="string">&#x27;dist&#x27;</span>, <span class="comment">// 打包后的文件夹名称，默认dist</span></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    open: <span class="literal">true</span>,</span><br><span class="line">    hot: <span class="literal">true</span>,</span><br><span class="line">    index: <span class="string">&#x27;./index.html&#x27;</span>, <span class="comment">// 默认启动页面</span></span><br><span class="line">    host: <span class="string">&#x27;0.0.0.0&#x27;</span>,</span><br><span class="line">    port: <span class="number">8090</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment">// 生产环境是否生成 sourceMap 文件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="三、爬坑注意"><a href="#三、爬坑注意" class="headerlink" title="三、爬坑注意"></a>三、爬坑注意</h2><h3 id="1-项目目录划分"><a href="#1-项目目录划分" class="headerlink" title="1. 项目目录划分"></a>1. 项目目录划分</h3><p>（1）将 <code>components</code> 、<code>router</code>、<code>views</code>、<code>store</code> 、静态数据配置层、业务层等文件结构按照多页面模块严格划分，多页面之间不容有业务上的耦合，防止进坑。</p>
+<p>（2）对于每个页面模块所用到的资源按需引入，减轻模块加载压力。</p>
+<h3 id="2-项目目录及打包的-html-文件如图"><a href="#2-项目目录及打包的-html-文件如图" class="headerlink" title="2. 项目目录及打包的 html 文件如图"></a>2. 项目目录及打包的 html 文件如图</h3><p>（1）项目访问地址方式：【<a class="link"   href="http://localhost:8090/home.html#/about%E3%80%91" >http://localhost:8090/home.html#/about】<i class="fas fa-external-link-alt"></i></a> 先指定要访问的静态 html 文件，再添加此页面下的路由地址即可。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182116492-1947954617.png" alt="项目 pages 文件夹"></p>
+<p>项目 pages 文件夹</p>
+<br>
+
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182158294-281140356.png" alt="home.html 文"></p>
+<p><img src="https://img2020.cnblogs.com/blog/1855591/202012/1855591-20201201182206734-111809435.png" alt="index.html"></p>
+<p>项目打包后的多页面生成的 html 文件</p>
+<p><br><br><br></p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>多页面</tag>
+      </tags>
+  </entry>
 </search>
